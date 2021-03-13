@@ -15,8 +15,8 @@ namespace CarsApi.Migrations
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Year = table.Column<int>(type: "int", nullable: false),
                     Doors = table.Column<int>(type: "int", nullable: false),
-                    BodyType = table.Column<int>(type: "int", nullable: false),
-                    Transmission = table.Column<int>(type: "int", nullable: false)
+                    BodyType = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    Transmission = table.Column<string>(type: "nvarchar(128)", nullable: false)
                 },
                 constraints: table =>
                 {

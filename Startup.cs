@@ -32,7 +32,7 @@ namespace GeekyMon2.CarsApi
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddControllers();
-            services.AddSingleton<ICarsService, CarsService>();
+            services.AddScoped<ICarsService, CarsService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarsApi", Version = "v1" });

@@ -23,8 +23,9 @@ namespace CarsApi.Migrations
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("BodyType")
-                        .HasColumnType("int");
+                    b.Property<string>("BodyType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<int>("Doors")
                         .HasColumnType("int");
@@ -35,8 +36,9 @@ namespace CarsApi.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Transmission")
-                        .HasColumnType("int");
+                    b.Property<string>("Transmission")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
