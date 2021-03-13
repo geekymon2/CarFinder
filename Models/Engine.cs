@@ -1,10 +1,10 @@
-namespace cars_api.Models
+namespace GeekyMon2.CarsApi.Models
 {
     public class Engine
     {
-        private int cylinders;
-        private int size;
-        private int power;
-        private string description;
+        public int Cylinders { get; set; }
+        public int Size { get; set; }
+        public int Power { get; set; }  
+        public int Description { get; set; } 
     }
 }

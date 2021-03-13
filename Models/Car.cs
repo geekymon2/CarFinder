@@ -1,18 +1,13 @@
-namespace cars_api.Models
+namespace GeekyMon2.CarsApi.Models
 {
     public class Car
     {
-        private string name;
-        private string make;
-        private string model;
-        private int year;
-        private int doors;
-        private Transmission transmission;
-        private BodyType bodyType;
-        private Engine engine;
-        
-
-
-
+        public string Name {get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public int Year { get; set; }
+        public int Doors { get; set; }
+        public BodyType BodyType { get; set; }
+        public Transmission Transmission { get; set; }  
     }
 }
