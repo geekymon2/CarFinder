@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using GeekyMon2.CarsApi.Service;
+using GeekyMon2.CarsApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GeekyMon2.CarsApi
 {
@@ -27,6 +29,7 @@ namespace GeekyMon2.CarsApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddControllers();
             services.AddSingleton<ICarsService, CarsService>();
@@ -34,6 +37,7 @@ namespace GeekyMon2.CarsApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarsApi", Version = "v1" });
             });
+            services.AddDbContext<CarContext>(opt => opt.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
