@@ -14,6 +14,10 @@ namespace GeekyMon2.CarsApi.Models
         public BodyType BodyType { get; set; }
         
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public Transmission Transmission { get; set; }  
+        public Transmission Transmission { get; set; }
+
+        public override string ToString() {
+            return string.Format("Car: id={0}, make={1}, model={2}, year={3} ", ID, Make, Model, Year);
+         }
     }
 }
