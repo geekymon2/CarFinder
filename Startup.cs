@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace webapi
+namespace GeekyMon2.CarsApi
 {
     public class Startup
     {

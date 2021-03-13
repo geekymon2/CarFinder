@@ -1,6 +1,6 @@
 using System;
 
-namespace webapi
+namespace GeekyMon2.CarsApi
 {
     public class WeatherForecast
     {
