@@ -23,9 +23,17 @@ namespace GeekyMon2.CarsApi.Service
 
         public Car AddCar(Car carItem)
         {
+            try 
+            {
             _carContext.Add(carItem);
             _carContext.SaveChanges();
             _logger.LogInformation(carItem.ToString() + "Total: {0}", _carContext.Cars.Count());
+            }
+            catch(System.Exception ex) {
+                _logger.LogError("Failed adding car: {0}", ex);
+                throw;
+            }
+
             return carItem;
         }
 
@@ -47,6 +55,7 @@ namespace GeekyMon2.CarsApi.Service
         {
             Car c = new Car(id);
             _carContext.Remove(c);
+            _carContext.SaveChanges();
             return id;
         }
         

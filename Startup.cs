@@ -50,6 +50,8 @@ namespace GeekyMon2.CarsApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarsApi v1"));
             }
 
+            app.UseExceptionHandler("/error");
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -60,6 +62,7 @@ namespace GeekyMon2.CarsApi
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
