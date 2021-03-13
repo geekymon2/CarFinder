@@ -5,24 +5,47 @@ namespace GeekyMon2.CarsApi.Service
 {
     public class CarsService : ICarsService
     {
-        public Car AddCar(Car car)
-        {
-            throw new System.NotImplementedException();
-        }
+        private List<Car> _carItems;
 
-        public string DeleteCar(string id)
+        public CarsService()
         {
-            throw new System.NotImplementedException();
+            _carItems = new List<Car>();
         }
 
         public List<Car> GetCars()
         {
-            throw new System.NotImplementedException();
+            return _carItems;
+        }
+
+        public Car AddCar(Car carItem)
+        {
+            _carItems.Add(carItem);
+            return carItem;
         }
 
         public Car UpdateCar(string id, Car car)
         {
-            throw new System.NotImplementedException();
+            for (var index = _carItems.Count - 1; index >= 0; index--)
+            {
+                if (_carItems[index].ID == id)
+                {
+                    _carItems[index] = car;
+                }
+            }
+            return car;
+        }
+
+        public string DeleteCar(string id)
+        {
+            for (var index = _carItems.Count - 1; index >= 0; index--)
+            {
+                if (_carItems[index].ID == id)
+                {
+                    _carItems.RemoveAt(index);
+                }
+            }
+
+            return id;
         }
     }
 }
