@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace GeekyMon2.CarsApi.Models
 {
     public class Car
@@ -7,7 +9,11 @@ namespace GeekyMon2.CarsApi.Models
         public string Model { get; set; }
         public int Year { get; set; }
         public int Doors { get; set; }
+        
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public BodyType BodyType { get; set; }
+        
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public Transmission Transmission { get; set; }  
     }
 }
