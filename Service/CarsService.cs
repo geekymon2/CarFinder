@@ -66,16 +66,16 @@ namespace GeekyMon2.CarsApi.Service
         }
 
         public string DeleteCar(string id)
-        {
-            Car c = new Car(id);
-            if (c == null) 
+        {            
+            Car c = _carContext.Cars.Find(id);
+            if (c != null)
             {
-                return null;
+                _carContext.Remove(c);
+                _carContext.SaveChanges();
+                return id;
             }
-            
-            _carContext.Remove(c);
-            _carContext.SaveChanges();
-            return id;
+
+            return null;
         }
         
         ~CarsService()

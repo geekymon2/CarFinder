@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using GeekyMon2.CarsApi.Models;
 using GeekyMon2.CarsApi.Service;
 using Microsoft.AspNetCore.Http;
@@ -49,9 +47,7 @@ namespace GeekyMon2.CarsApi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<string> DeleteCar(string id)
         {
-            id = _service.DeleteCar(id);
-
-            if (id == null)
+            if (_service.DeleteCar(id) == null)
             {
                 _logger.LogError($"Car not found for id: {id}");
 		        return NotFound(new ErrorDetails 

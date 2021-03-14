@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace GeekyMon2.CarsApi.Models
 {
     public class CarDTO
