@@ -37,17 +37,11 @@ namespace GeekyMon2.CarsApi.Service
 
         public CarDTO AddCar(CarDTO carItem)
         {
-            try 
-            {
+
             var c = new Car(carItem.ID,carItem.Make, carItem.Model, carItem.Year, carItem.Doors, carItem.BodyType, carItem.Transmission);
             _carContext.Add(c);
             _carContext.SaveChanges();
             _logger.LogInformation(carItem.ToString() + "Total: {0}", _carContext.Cars.Count());
-            }
-            catch(System.Exception ex) {
-                _logger.LogError("Failed adding car: {0}", ex);
-                throw;
-            }
 
             return carItem;
         }
@@ -74,6 +68,11 @@ namespace GeekyMon2.CarsApi.Service
         public string DeleteCar(string id)
         {
             Car c = new Car(id);
+            if (c == null) 
+            {
+                return null;
+            }
+            
             _carContext.Remove(c);
             _carContext.SaveChanges();
             return id;

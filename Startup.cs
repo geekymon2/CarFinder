@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,6 +7,8 @@ using Microsoft.OpenApi.Models;
 using GeekyMon2.CarsApi.Service;
 using Microsoft.EntityFrameworkCore;
 using GeekyMon2.CarsApi.DataAccess.DBContext;
+using GeelyMon2.CarsApi.Exception;
+using Microsoft.Extensions.Logging;
 
 namespace GeekyMon2.CarsApi
 {
@@ -40,7 +36,7 @@ namespace GeekyMon2.CarsApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger logger)
         {
             if (env.IsDevelopment())
             {
@@ -48,6 +44,8 @@ namespace GeekyMon2.CarsApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarsApi v1"));
             }
+
+            app.ConfigureExceptionHandler(logger);
 
             app.UseExceptionHandler("/error");
 

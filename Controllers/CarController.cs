@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using GeekyMon2.CarsApi.Models;
 using GeekyMon2.CarsApi.Service;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -42,11 +44,24 @@ namespace GeekyMon2.CarsApi.Controllers
             return car;
         }   
 
+
         [HttpDelete("/api/cars/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<string> DeleteCar(string id)
         {
-            _service.DeleteCar(id);
-            return id;
+            id = _service.DeleteCar(id);
+
+            if (id == null)
+            {
+                _logger.LogError($"Car not found for id: {id}");
+		        return NotFound(new ErrorDetails 
+                { 
+                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound), 
+                    ErrorMessage = $"Car not found for id: {id}." 
+                });
+            }
+
+            return Ok(id);
         }                     
     }
 }
