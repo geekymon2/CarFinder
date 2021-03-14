@@ -13,6 +13,17 @@ namespace GeekyMon2.CarsApi.DataAccess.Entities
             ID = id;            
         }
 
+        public Car(string id, string make, string model, int year, int doors, string bodyType, string transmission)
+        {
+            ID = id;            
+            Make = make;
+            Model = model;
+            Year = year;
+            Doors = doors;
+            BodyType = (BodyType)System.Enum.Parse(typeof(BodyType),bodyType);
+            Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),transmission);
+        }
+
         public string ID {get; set; }
         public string Make { get; set; }
         public string Model { get; set; }

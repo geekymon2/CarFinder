@@ -39,7 +39,8 @@ namespace GeekyMon2.CarsApi.Service
         {
             try 
             {
-            _carContext.Add(carItem);
+            var c = new Car(carItem.ID,carItem.Make, carItem.Model, carItem.Year, carItem.Doors, carItem.BodyType, carItem.Transmission);
+            _carContext.Add(c);
             _carContext.SaveChanges();
             _logger.LogInformation(carItem.ToString() + "Total: {0}", _carContext.Cars.Count());
             }
