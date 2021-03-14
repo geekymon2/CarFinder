@@ -1,13 +1,14 @@
 using System.Collections.Generic;
+using System.Linq;
 using GeekyMon2.CarsApi.Models;
 
 namespace GeekyMon2.CarsApi.Service
 {
     public interface ICarsService
     {
-        public List<Car> GetCars();
-        public Car AddCar(Car car);
-        public Car UpdateCar(string id, Car car);
+        public List<CarDTO> GetCars();
+        public CarDTO AddCar(CarDTO car);
+        public CarDTO UpdateCar(string id, CarDTO car);
         public string DeleteCar(string id);        
     }
 }

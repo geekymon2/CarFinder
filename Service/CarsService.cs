@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using GeekyMon2.CarsApi.Models;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using GeekyMon2.CarsApi.DataAccess.DBContext;
+using GeekyMon2.CarsApi.DataAccess.Entities;
 
 namespace GeekyMon2.CarsApi.Service
 {
@@ -16,12 +18,24 @@ namespace GeekyMon2.CarsApi.Service
             _logger = logger;
         }
 
-        public List<Car> GetCars()
+        public List<CarDTO> GetCars()
         {
-            return _carContext.Cars.ToList();
+            var cars = from c in _carContext.Cars
+                select new CarDTO()
+                {
+                    ID = c.ID,
+                    Make = c.Make,
+                    Model = c.Model,
+                    Year = c.Year,
+                    Doors = c.Doors,
+                    Transmission = c.Transmission.ToString(),
+                    BodyType = c.BodyType.ToString()
+                };
+
+            return cars.ToList();
         }
 
-        public Car AddCar(Car carItem)
+        public CarDTO AddCar(CarDTO carItem)
         {
             try 
             {
@@ -37,14 +51,19 @@ namespace GeekyMon2.CarsApi.Service
             return carItem;
         }
 
-        public Car UpdateCar(string id, Car car)
+        public CarDTO UpdateCar(string id, CarDTO car)
         {
             var c = _carContext.Cars.FirstOrDefault(
                 c => c.ID == id
             );
 
             if (c != null) {
-                c = car;
+                c.Make = car.Make;
+                c.Model = car.Model;
+                c.Year = car.Year;
+                c.Doors = car.Doors;
+                c.Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),car.Transmission);
+                c.BodyType = (BodyType)System.Enum.Parse(typeof(BodyType),car.BodyType);
                 _carContext.SaveChanges();
             }
 

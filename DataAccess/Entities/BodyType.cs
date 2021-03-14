@@ -1,4 +1,4 @@
-namespace GeekyMon2.CarsApi.Models
+namespace GeekyMon2.CarsApi.DataAccess.Entities
 {
     public enum BodyType
     {

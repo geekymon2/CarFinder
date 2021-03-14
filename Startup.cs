@@ -9,11 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using GeekyMon2.CarsApi.Service;
-using GeekyMon2.CarsApi.Models;
 using Microsoft.EntityFrameworkCore;
+using GeekyMon2.CarsApi.DataAccess.DBContext;
 
 namespace GeekyMon2.CarsApi
 {
@@ -51,7 +50,7 @@ namespace GeekyMon2.CarsApi
             }
 
             app.UseExceptionHandler("/error");
-            
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

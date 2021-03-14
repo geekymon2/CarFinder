@@ -1,7 +1,7 @@
-using GeekyMon2.CarsApi.Models;
+using GeekyMon2.CarsApi.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GeekyMon2.CarsApi.Models
+namespace GeekyMon2.CarsApi.DataAccess.DBContext
 {
     public class CarContext : DbContext
     {

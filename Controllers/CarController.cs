@@ -23,20 +23,20 @@ namespace GeekyMon2.CarsApi.Controllers
         }
 
         [HttpGet("/api/cars")]
-        public ActionResult<List<Car>> GetCars()
+        public ActionResult<List<CarDTO>> GetCars()
         {
             return _service.GetCars();
         }
 
         [HttpPost("/api/cars")]
-        public ActionResult<Car> AddCar(Car car)
+        public ActionResult<CarDTO> AddCar(CarDTO car)
         {
             _service.AddCar(car);
             return car;
         }
 
         [HttpPut("/api/cars/{id}")]
-        public ActionResult<Car> UpdateCar(string id, Car car)
+        public ActionResult<CarDTO> UpdateCar(string id, CarDTO car)
         {
             _service.UpdateCar(id, car);
             return car;
@@ -46,7 +46,6 @@ namespace GeekyMon2.CarsApi.Controllers
         public ActionResult<string> DeleteCar(string id)
         {
             _service.DeleteCar(id);
-            //_logger.LogInformation("cars", _cars);
             return id;
         }                     
     }

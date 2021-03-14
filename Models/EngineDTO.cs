@@ -1,6 +1,6 @@
 namespace GeekyMon2.CarsApi.Models
 {
-    public class Engine
+    public class EngineDTO
     {
         public int Cylinders { get; set; }
         public int Size { get; set; }

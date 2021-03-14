@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace GeekyMon2.CarsApi.Models
+namespace GeekyMon2.CarsApi.DataAccess.Entities
 {
     public class Car
     {
@@ -19,16 +19,14 @@ namespace GeekyMon2.CarsApi.Models
         public int Year { get; set; }
         public int Doors { get; set; }
         
-        [JsonConverter(typeof(JsonStringEnumConverter))]
         [Column(TypeName = "nvarchar(128)")]
         public BodyType BodyType { get; set; }
         
-        [JsonConverter(typeof(JsonStringEnumConverter))]
         [Column(TypeName = "nvarchar(128)")]
         public Transmission Transmission { get; set; }
 
         public override string ToString() {
-            return string.Format("Car: id={0}, make={1}, model={2}, year={3} ", ID, Make, Model, Year);
+            return string.Format("Entity Car: id={0}, make={1}, model={2}, year={3} ", ID, Make, Model, Year);
          }
     }
 }
