@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GeekyMon2.CarsApi.DataAccess.Entities
+namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
 {
     public class Car
     {

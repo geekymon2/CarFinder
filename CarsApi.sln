@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Api", "Cars.API\Cars.Api.csproj", "{82A962B0-5EC7-4D1E-9B4A-1C7D4D463AFA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4907723B-591B-42FC-8B31-C8DF9057CDA4} = {4907723B-591B-42FC-8B31-C8DF9057CDA4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.DAL", "Cars.DAL\Cars.DAL.csproj", "{4907723B-591B-42FC-8B31-C8DF9057CDA4}"
 EndProject
