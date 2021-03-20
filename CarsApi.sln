@@ -8,7 +8,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.Api", "Cars.API\Cars.A
 		{4907723B-591B-42FC-8B31-C8DF9057CDA4} = {4907723B-591B-42FC-8B31-C8DF9057CDA4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.DAL", "Cars.DAL\Cars.DAL.csproj", "{4907723B-591B-42FC-8B31-C8DF9057CDA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.DAL", "Cars.DAL\Cars.DAL.csproj", "{4907723B-591B-42FC-8B31-C8DF9057CDA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A26B2281-C5C7-4695-801C-63BA56CCEA56}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
