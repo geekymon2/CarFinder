@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace GeekyMon2.CarsApi
+namespace Geekymon2.CarsApi.Cars.Api
 {
     public class Program
     {

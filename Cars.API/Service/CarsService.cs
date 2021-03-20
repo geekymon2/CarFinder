@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using GeekyMon2.CarsApi.Models;
 using Microsoft.Extensions.Logging;
 using System.Linq;
-using GeekyMon2.CarsApi.DataAccess.DBContext;
-using GeekyMon2.CarsApi.DataAccess.Entities;
+using Geekymon2.CarsApi.Cars.DAL.DataAccess.DBContext;
+using Geekymon2.CarsApi.Cars.Api.Models;
+using Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities;
 
-namespace GeekyMon2.CarsApi.Service
+namespace Geekymon2.CarsApi.Cars.Api.Service
 {
     public class CarsService : ICarsService
     {

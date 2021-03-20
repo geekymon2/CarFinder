@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Geekymon2.CarsApi.Cars.Api</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

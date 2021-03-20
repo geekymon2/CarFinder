@@ -4,13 +4,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using GeekyMon2.CarsApi.Service;
 using Microsoft.EntityFrameworkCore;
-using GeekyMon2.CarsApi.DataAccess.DBContext;
-using GeelyMon2.CarsApi.Exception;
 using Microsoft.Extensions.Logging;
+using Geekymon2.CarsApi.Cars.Api.Service;
+using Geekymon2.CarsApi.Cars.Api.Exception;
+using Geekymon2.CarsApi.Cars.DAL.DataAccess.DBContext;
 
-namespace GeekyMon2.CarsApi
+namespace Geekymon2.CarsApi.Cars.Api
 {
     public class Startup
     {

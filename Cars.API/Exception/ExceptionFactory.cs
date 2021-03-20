@@ -1,11 +1,11 @@
 using System.Net;
-using GeekyMon2.CarsApi.Models;
+using Geekymon2.CarsApi.Cars.Api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace GeelyMon2.CarsApi.Exception
+namespace Geekymon2.CarsApi.Cars.Api.Exception
 {
     public static class ExceptionFactory
     {
