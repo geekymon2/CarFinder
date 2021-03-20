@@ -1,2 +1,13 @@
-#CarsApi Project
-Simple CRUD Rest API example for Cars
+# CarFinder - A Simple Cars Listing Browser
+
+This project demonstrates a simple car listing browser
+
+The following technologies are used.
+* dotnet 5
+* webapi rest services
+* entity framework core
+* docker
+* kubernetes
+
+Build and deployment via Azure Pipelines
+
