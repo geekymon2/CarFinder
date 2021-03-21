@@ -1,6 +1,7 @@
 version: "3.9"
 services: 
   web: 
+    image: "geekymon2/carfinder"
     build: .
     ports:
       - "8080:80"
@@ -10,4 +11,6 @@ services:
     image: "mcr.microsoft.com/mssql/server"
     environment: 
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: 
+      SA_PASSWORD: "P@ssw0rd"
+    ports: 
+      - "1401:1433"
