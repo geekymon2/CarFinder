@@ -13,4 +13,4 @@ services:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "P@ssw0rd"
     ports: 
-      - "1401:1433"
+      - "1403:1433"
