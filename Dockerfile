@@ -4,17 +4,19 @@ EXPOSE 5000
 ENV ASPNETCORE_URLS=http://*:5000
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+ARG Configuration=Release
 WORKDIR /src
-COPY ["Cars.API/Cars.Api.csproj", "./"]
-COPY ["Cars.DAL/Cars.DAL.csproj", "./"]
-RUN dotnet restore "Cars.Api.csproj"
-RUN dotnet restore "Cars.DAL.csproj"
+COPY *.sln ./
+COPY ["Cars.API/Cars.Api.csproj", "Cars.API/"]
+COPY ["Cars.DAL/Cars.DAL.csproj", "Cars.DAL/"]
+RUN dotnet restore
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "Cars.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/Cars.API"
+RUN dotnet build -c ${Configuration} -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Cars.Api.csproj" -c Release -o /app/publish
+ARG Configuration=Release
+RUN dotnet publish -c ${Configuration} -o /app/publish
 
 FROM base AS final
 WORKDIR /app

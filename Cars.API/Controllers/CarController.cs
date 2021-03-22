@@ -22,6 +22,12 @@ namespace Geekymon2.CarsApi.Cars.Api.Controllers
             _service = service;
         }
 
+        [HttpGet("/api/test")]
+        public ActionResult<String> GetTest()
+        {
+            return "Testing from container";
+        }
+
         [HttpGet("/api/cars")]
         public ActionResult<List<CarDTO>> GetCars()
         {
