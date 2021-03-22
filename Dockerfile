@@ -1,21 +1,22 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
+EXPOSE 5000
+ENV ASPNETCORE_URLS=http://*:5000
 
-#copy the projects and restore
-COPY ["Cars.API/Cars.Api.csproj", "Cars.API/"]
-COPY ["Cars.DAL/Cars.DAL.csproj", "Cars.DAL/"]
-RUN dotnet restore "Cars.API/Cars.Api.csproj"
-
-#copy everything else and build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY ["Cars.API/Cars.Api.csproj", "./"]
+COPY ["Cars.DAL/Cars.DAL.csproj", "./"]
+RUN dotnet restore "Cars.Api.csproj"
+RUN dotnet restore "Cars.DAL.csproj"
 COPY . .
-RUN dotnet build -c Release -o /app/build
+WORKDIR "/src/."
+RUN dotnet build "Cars.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish "Cars.Api.csproj" -c Release -o /app/publish
 
-FROM publish AS final
+FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY entrypoint.sh ./entrypoint.sh
-RUN chmod +x ./entrypoint.sh
-#CMD /bin/bash ./entrypoint.sh
+ENTRYPOINT ["dotnet", "Cars.Api.dll"]

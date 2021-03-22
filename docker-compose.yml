@@ -4,7 +4,7 @@ services:
     image: "geekymon2/carfinder"
     build: .
     ports:
-      - "8080:80"
+      - "5000:5000"
     depends_on: 
       - db
   db:
