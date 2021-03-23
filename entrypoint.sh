@@ -3,7 +3,8 @@
 set -e
 run_cmd="dotnet run --server.urls http://*:5000"
 
-until dotnet ef database update; do
+cd /app/src
+until dotnet-ef database update --project Cars.Api.csproj; do
 >&2 echo "SQL Server is starting up...."
 sleep 1
 done
