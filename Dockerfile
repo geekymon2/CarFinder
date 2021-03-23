@@ -17,10 +17,24 @@ WORKDIR /src
 COPY *.sln ./
 COPY ["Cars.API/Cars.Api.csproj", "Cars.API/"]
 COPY ["Cars.DAL/Cars.DAL.csproj", "Cars.DAL/"]
+COPY ["Cars.EF.Migrations/Cars.EF.Migrations.csproj", "Cars.EF.Migrations/"]
 RUN dotnet restore
 COPY . .
 WORKDIR "/src/Cars.API"
 RUN dotnet build -c ${Configuration} -o /app/build
+
+#entityframework migrations project
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS migration
+ARG Configuration=Release
+WORKDIR /src
+COPY *.sln ./
+COPY ["Cars.API/Cars.Api.csproj", "Cars.API/"]
+COPY ["Cars.DAL/Cars.DAL.csproj", "Cars.DAL/"]
+COPY ["Cars.EF.Migrations/Cars.EF.Migrations.csproj", "Cars.EF.Migrations/"]
+RUN dotnet restore
+COPY . .
+WORKDIR "/src/Cars.EF.Migrations"
+RUN dotnet build -c ${Configuration} -o /app/migration
 
 #publish
 FROM build AS publish
@@ -31,13 +45,11 @@ RUN dotnet publish -c ${Configuration} -o /app/publish
 #copy published artifacts
 #copy source for ef database update
 FROM base AS final
+WORKDIR /migration
+COPY --from=migration /app/migration .
 WORKDIR /app
 ENV PATH="${PATH}:/root/.dotnet/tools"
 COPY --from=build /src/*.* /app/src/
 COPY --from=publish /app/publish .
 COPY --from=publish /root/.dotnet/tools /root/.dotnet/tools
-COPY entrypoint.sh ./entrypoint.sh
-
-#change permissions and execute entrypoint
-RUN chmod +x ./entrypoint.sh
-CMD /bin/bash ./entrypoint.sh
+ENTRYPOINT ["dotnet", "Cars.Api.dll"]
