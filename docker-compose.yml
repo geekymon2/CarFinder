@@ -3,6 +3,8 @@ services:
   web: 
     image: "geekymon2/carfinder"
     build: .
+    #webapp runs on port 5000
+    #exposing port 5000 to host
     ports:
       - "5000:5000"
     depends_on: 
@@ -12,5 +14,7 @@ services:
     environment: 
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "P@ssw0rd"
-    ports: 
+    #db container keeps running on port 1433
+    #exposing port 1403 to host db connection
+    ports:
       - "1403:1433"

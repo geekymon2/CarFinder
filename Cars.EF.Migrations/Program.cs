@@ -17,7 +17,8 @@ namespace Cars.EF.Migrations
             .Build();
             using (var context = (CarContext) webHost.Services.GetService(typeof(CarContext)))
             {
-                context.Database.EnsureCreated();
+                //drop and recreate the whole database.
+                context.Database.EnsureDeleted();
                 context.Database.Migrate();
             }            
             Console.WriteLine("Applying EF migrations Completed.");

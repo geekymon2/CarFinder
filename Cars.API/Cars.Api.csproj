@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cars.DAL\Cars.DAL.csproj" />
+    <ProjectReference Include="..\Cars.EF.Migrations\Cars.EF.Migrations.csproj" />
   </ItemGroup>
 
 </Project>
