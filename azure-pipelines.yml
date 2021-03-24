@@ -12,7 +12,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-  task: Docker@2
-  displayname: build  
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  task: DockerCompose@@
+  displayname: Build CarFinder
+  dockerComposeFile: docker-compose.yml
+    projectName: $(Build.Repository.Name)
