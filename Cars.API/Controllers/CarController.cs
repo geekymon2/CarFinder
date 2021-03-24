@@ -22,10 +22,10 @@ namespace Geekymon2.CarsApi.Cars.Api.Controllers
             _service = service;
         }
 
-        [HttpGet("/api/test")]
-        public ActionResult<String> GetTest()
+        [HttpGet("/api/status")]
+        public ActionResult<String> GetStatus()
         {
-            return "Testing from container";
+            return "API is running.....";
         }
 
         [HttpGet("/api/cars")]
