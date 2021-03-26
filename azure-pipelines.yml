@@ -4,25 +4,67 @@ trigger:
     - master
 
 variables:
+
+  # build properties
   buildConfiguration: 'Release'
-  location: 'West US 2'
+
+  # docker image registry settings
+  dockerRegistyService: 'DockerHub'
+
+  # azure app service build config
+  location: 'Australia East'
   dockerImageName: 'geekymon2/carfinder'
+  dockerImageVersion: 'latest'
+  webAppName: 'carfinder-api-test'
+  resourceGroupName: 'CarFinder'
+  sku: 'Free'
+  skuCode: 'F1'
+
 
 pool: Default
 
 steps:
+  # build the docker carfinder api image
   - task: DockerCompose@0
     displayName: 'Build CarFinder API image'
     inputs:
       action: 'Build services'
-      containerregistrytype: 'Docker Hub'
+      containerregistrytype: "$(dockerRegistyService)"
       dockerComposeFile: docker-compose.yml
-      projectName: $(Build.Repository.Name)
+
+  # push the carfinder api image to docker hub
+  # note dockerRegistryEndpoint "DockerHub" is configured 
+  # as a service connection in AzureDevops Project Setting 
   - task: DockerCompose@0
     displayName: 'Push CarFinder API image'
     inputs:
       action: 'Push services'
-      containerregistrytype: 'DockerHub'
-      dockerRegistryEndpoint: 'DockerHub'
+      containerregistrytype: "$(dockerRegistyService)"
+      dockerRegistryEndpoint: "$(dockerRegistyService)"
       command: 'Push an image'
       imageName: '$(dockerImageName)'
+
+  # Create or update Azure App Service
+  - task: AzureResourceGroupDeployment@2
+    displayName: 'Azure Deployment:Create Azure App Service for CarFinder API'
+    inputs:
+      azureSubscription: 'AzureSC'
+      resourceGroupName: '$(resourceGroupName)'
+      location: '$(location)'
+      csmFile: '$(Pipeline.Workspace)/**/container-webapp-template.json'
+      overrideParameters: '-webAppName $(webAppName) -hostingPlanName $(webAppName) -appInsightsLocation "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -imageName $(dockerImageName):$(dockerImageVersion)'
+
+  # Deploy App Service
+  - task: AzureRmWebAppDeployment@3
+    displayName: 'Deploy Azure App Service'
+    inputs:
+      azureSubscription: 'AzureSC'
+      appType: applinux
+      WebAppName: $(webAppName)
+      DockerNamespace: $(acrHostName)
+      DockerRepository: $(webAppName)
+      DockerImageTag: '$(dockerImageVersion)'
+      WebAppUri: webAppUrl
+      TakeAppOfflineFlag: true
+      UseWebDeploy: true
+      RenameFilesFlag: true      
