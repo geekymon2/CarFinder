@@ -1,6 +1,8 @@
 variables:
   buildConfiguration: 'Release'
 
+pool: Default
+
 steps:
   - task: DockerCompose@0
     displayName: Build CarFinder API image
