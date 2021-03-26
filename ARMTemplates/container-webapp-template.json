@@ -15,6 +15,7 @@
             "type": "string"
         },
         "alwaysOn": {
+            "defaultValue": "false",
             "type": "bool"
         },
         "sku": {
