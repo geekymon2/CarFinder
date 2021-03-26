@@ -12,7 +12,7 @@ variables:
   dockerRegistyService: 'DockerHub'
 
   # azure subscription
-  azureSc: "GeekyMon2AzureSubscription"
+  azureSc: "GeekyMon2AzureRM"
 
   # azure app service build config
   location: 'Australia East'
@@ -55,7 +55,7 @@ steps:
       resourceGroupName: '$(resourceGroupName)'
       location: '$(location)'
       csmFile: '$(Pipeline.Workspace)/**/container-webapp-template.json'
-      overrideParameters: '-subscriptionId $(azureSc) -webAppName $(webAppName) -hostingPlanName $(webAppName) -appInsightsLocation "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -imageName $(dockerImageName):$(dockerImageVersion)'
+      overrideParameters: '-webAppName $(webAppName) -hostingPlanName $(webAppName) -appInsightsLocation "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -imageName $(dockerImageName):$(dockerImageVersion)'
 
   # # Deploy App Service
   # - task: AzureRmWebAppDeployment@4
