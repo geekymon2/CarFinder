@@ -11,6 +11,9 @@ variables:
   # docker image registry settings
   dockerRegistyService: 'DockerHub'
 
+  # azure subscription
+  azureSc: "GeekyMon2AzureSubscription"
+
   # azure app service build config
   location: 'Australia East'
   dockerImageName: 'geekymon2/carfinder'
@@ -48,7 +51,7 @@ steps:
   - task: AzureResourceGroupDeployment@2
     displayName: 'Azure Deployment:Create Azure App Service for CarFinder API'
     inputs:
-      azureSubscription: 'AzureSC'
+      azureSubscription: '$(azureSc)'
       resourceGroupName: '$(resourceGroupName)'
       location: '$(location)'
       csmFile: '$(Pipeline.Workspace)/**/container-webapp-template.json'
@@ -58,7 +61,7 @@ steps:
   - task: AzureRmWebAppDeployment@3
     displayName: 'Deploy Azure App Service'
     inputs:
-      azureSubscription: 'AzureSC'
+      azureSubscription: '$(azureSc)'
       appType: applinux
       WebAppName: $(webAppName)
       DockerNamespace: $(acrHostName)
