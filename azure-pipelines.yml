@@ -22,7 +22,7 @@ steps:
     displayName: 'Push CarFinder API image'
     inputs:
       action: 'Push services'
-      containerregistrytype: 'Docker Hub'
-      dockerRegistryEndpoint: 'Docker Hub'
+      containerregistrytype: 'DockerHub'
+      dockerRegistryEndpoint: 'DockerHub'
       command: 'Push an image'
       imageName: '$(dockerImageName)'
