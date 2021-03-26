@@ -3,7 +3,7 @@ variables:
 
 steps:
   - task: DockerCompose@@
-    displayname: Build CarFinder API image
+    displayName: Build CarFinder API image
     inputs:
       action: Build services
       containerregistrytype: Docker Hub
