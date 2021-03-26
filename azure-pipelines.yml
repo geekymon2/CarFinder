@@ -58,7 +58,7 @@ steps:
       overrideParameters: '-webAppName $(webAppName) -hostingPlanName $(webAppName) -appInsightsLocation "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -imageName $(dockerImageName):$(dockerImageVersion)'
 
   # Deploy App Service
-  - task: AzureRmWebAppDeployment@3
+  - task: AzureRmWebAppDeployment@4
     displayName: 'Deploy Azure App Service'
     inputs:
       azureSubscription: '$(azureSc)'
