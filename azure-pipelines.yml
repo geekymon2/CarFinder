@@ -1,13 +1,28 @@
+trigger:
+  branches:
+    include:
+    - master
+
 variables:
   buildConfiguration: 'Release'
+  location: 'West US 2'
+  dockerImageName: 'geekymon2/carfinder'
 
 pool: Default
 
 steps:
   - task: DockerCompose@0
-    displayName: Build CarFinder API image
+    displayName: 'Build CarFinder API image'
     inputs:
-      action: Build services
-      containerregistrytype: Docker Hub
+      action: 'Build services'
+      containerregistrytype: 'Docker Hub'
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
+  - task: DockerCompose@0
+    displayName: 'Push CarFinder API image'
+    inputs:
+      action: 'Push services'
+      containerregistrytype: 'Docker Hub'
+      dockerRegistryEndpoint: 'Docker Hub'
+      command: 'Push an image'
+      imageName: '$(dockerImageName)'
