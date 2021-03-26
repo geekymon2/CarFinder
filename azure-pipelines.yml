@@ -48,7 +48,7 @@ steps:
       imageName: '$(dockerImageName)'
 
   # Create or update Azure App Service
-  - task: AzureResourceGroupDeployment@2
+  - task: AzureResourceGroupDeployment@3
     displayName: 'Azure Deployment:Create Azure App Service for CarFinder API'
     inputs:
       azureSubscription: '$(azureSc)'
