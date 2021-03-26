@@ -24,12 +24,15 @@
             "type": "string"
         },
         "workerSize": {
+            "defaultValue": "0",
             "type": "string"
         },
         "workerSizeId": {
+            "defaultValue": "0",
             "type": "string"
         },
         "numberOfWorkers": {
+            "defaultValue": "1",
             "type": "string"
         },
         "linuxFxVersion": {
