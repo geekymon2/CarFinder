@@ -2,7 +2,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-  - task: DockerCompose@@
+  - task: DockerCompose@0
     displayName: Build CarFinder API image
     inputs:
       action: Build services
