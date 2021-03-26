@@ -1,18 +1,11 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
-trigger:
-- master
-
-pool: Default
-
 variables:
   buildConfiguration: 'Release'
 
 steps:
-  task: DockerCompose@@
-  displayname: Build CarFinder
-  dockerComposeFile: docker-compose.yml
-    projectName: $(Build.Repository.Name)
+  - task: DockerCompose@@
+    displayname: Build CarFinder API image
+    inputs:
+      action: Build services
+      containerregistrytype: Docker Hub
+      dockerComposeFile: docker-compose.yml
+      projectName: $(Build.Repository.Name)

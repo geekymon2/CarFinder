@@ -3,8 +3,8 @@ services:
   web: 
     image: "geekymon2/carfinder"
     build: .
-    #webapp runs on port 5000
-    #exposing port 80 to host
+    #container runs on port 5000
+    #container exposing port 80
     ports:
       - "80:5000"
     depends_on: 
