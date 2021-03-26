@@ -57,17 +57,17 @@ steps:
       csmFile: '$(Pipeline.Workspace)/**/container-webapp-template.json'
       overrideParameters: '-webAppName $(webAppName) -hostingPlanName $(webAppName) -appInsightsLocation "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -imageName $(dockerImageName):$(dockerImageVersion)'
 
-  # Deploy App Service
-  - task: AzureRmWebAppDeployment@4
-    displayName: 'Deploy Azure App Service'
-    inputs:
-      azureSubscription: '$(azureSc)'
-      appType: applinux
-      WebAppName: $(webAppName)
-      DockerNamespace: $(acrHostName)
-      DockerRepository: $(webAppName)
-      DockerImageTag: '$(dockerImageVersion)'
-      WebAppUri: webAppUrl
-      TakeAppOfflineFlag: true
-      UseWebDeploy: true
-      RenameFilesFlag: true      
+  # # Deploy App Service
+  # - task: AzureRmWebAppDeployment@4
+  #   displayName: 'Deploy Azure App Service'
+  #   inputs:
+  #     azureSubscription: '$(azureSc)'
+  #     appType: applinux
+  #     WebAppName: $(webAppName)
+  #     DockerNamespace: $(acrHostName)
+  #     DockerRepository: $(webAppName)
+  #     DockerImageTag: '$(dockerImageVersion)'
+  #     WebAppUri: webAppUrl
+  #     TakeAppOfflineFlag: true
+  #     UseWebDeploy: true
+  #     RenameFilesFlag: true      
