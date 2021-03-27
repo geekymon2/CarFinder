@@ -17,6 +17,7 @@ variables:
 
   # azure subscription
   azureSc: "GeekyMon2AzureRM"
+  azureScId: $(AZURE_SUBSC_ID)
 
   # azure app service build config
   location: 'Australia East'
@@ -59,7 +60,7 @@ steps:
       resourceGroupName: '$(resourceGroupName)'
       location: '$(location)'
       csmFile: '$(Pipeline.Workspace)/**/container-webapp-template.json'
-      overrideParameters: '-name $(webAppName) -hostingPlanName $(webAppName) -location "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -serverFarmResourceGroup "CarFinder" -linuxFxVersion "DOTNETCORE|5.0" -dockerRegistryUrl $(dockerRegistryUrl) -dockerRegistryUsername $(dockerRegistryUsername) -dockerRegistryPassword $(dockerRegistryPassword) -dockerRegistryStartupCommand $(dockerStartupCmd)'
+      overrideParameters: '-subscriptionId $(subscriptionId) -name $(webAppName) -hostingPlanName $(webAppName) -location "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -serverFarmResourceGroup "CarFinder" -linuxFxVersion "DOTNETCORE|5.0" -dockerRegistryUrl $(dockerRegistryUrl) -dockerRegistryUsername $(dockerRegistryUsername) -dockerRegistryPassword $(dockerRegistryPassword) -dockerRegistryStartupCommand $(dockerStartupCmd)'
 
   # # Deploy App Service
   # - task: AzureRmWebAppDeployment@4
