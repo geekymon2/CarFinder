@@ -25,7 +25,7 @@ namespace Geekymon2.CarsApi.Cars.Api.Controllers
         [HttpGet("/api/status")]
         public ActionResult<String> GetStatus()
         {
-            return "API is running. Now hosted in Azure App Service....";
+            return "API is running. Now hosted in Azure App Service.";
         }
 
         [HttpGet("/api/cars")]
