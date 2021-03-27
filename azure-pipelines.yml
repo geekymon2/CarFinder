@@ -28,3 +28,4 @@ steps:
       containerregistrytype: "$(dockerRegistyService)"
       dockerRegistryEndpoint: "$(dockerRegistyService)"
       command: 'Push an image'
+      imageName: '$(dockerImageName)'
