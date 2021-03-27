@@ -17,7 +17,7 @@ variables:
 
   # azure subscription
   azureSc: "GeekyMon2AzureRM"
-  azureScId: $(AZURE_SUBSC_ID)
+  azureScId: $(AZURE_SUBSCRIPTION_ID)
 
   # azure app service build config
   location: 'Australia East'
