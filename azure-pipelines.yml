@@ -4,30 +4,8 @@ trigger:
     - azuredevops
 
 variables:
-
-  # build properties
   buildConfiguration: 'Release'
-
-  # docker image registry settings
   dockerRegistyService: 'DockerHub'
-  dockerRegistryUrl: 'https://index.docker.io'
-  dockerRegistryUsername: $(DOCKERHUB_USER)
-  dockerRegistryPassword: $(DOCKERHUB_PASS)
-  dockerStartupCmd: ''
-
-  # azure subscription
-  azureSc: "GeekyMon2AzureRM"
-  azureScId: $(AZURE_SUBSCRIPTION_ID)
-
-  # azure app service build config
-  location: 'Australia East'
-  dockerImageName: 'geekymon2/carfinder'
-  dockerImageVersion: 'latest'
-  webAppName: 'carfinder-api-test'
-  resourceGroupName: 'CarFinder'
-  sku: 'Free'
-  skuCode: 'F1'
-
 
 pool: Default
 
@@ -50,29 +28,3 @@ steps:
       containerregistrytype: "$(dockerRegistyService)"
       dockerRegistryEndpoint: "$(dockerRegistyService)"
       command: 'Push an image'
-      imageName: '$(dockerImageName)'
-
-  # Create or update Azure App Service
-  - task: AzureResourceGroupDeployment@2
-    displayName: 'Azure Deployment:Create Azure App Service for CarFinder API'
-    inputs:
-      azureSubscription: '$(azureSc)'
-      resourceGroupName: '$(resourceGroupName)'
-      location: '$(location)'
-      csmFile: '$(Pipeline.Workspace)/**/container-webapp-template.json'
-      overrideParameters: '-subscriptionId $(subscriptionId) -name $(webAppName) -hostingPlanName $(webAppName) -location "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -serverFarmResourceGroup "CarFinder" -linuxFxVersion "DOTNETCORE|5.0" -dockerRegistryUrl $(dockerRegistryUrl) -dockerRegistryUsername $(dockerRegistryUsername) -dockerRegistryPassword $(dockerRegistryPassword) -dockerRegistryStartupCommand $(dockerStartupCmd)'
-
-  # # Deploy App Service
-  # - task: AzureRmWebAppDeployment@4
-  #   displayName: 'Deploy Azure App Service'
-  #   inputs:
-  #     azureSubscription: '$(azureSc)'
-  #     appType: applinux
-  #     WebAppName: $(webAppName)
-  #     DockerNamespace: $(acrHostName)
-  #     DockerRepository: $(webAppName)
-  #     DockerImageTag: '$(dockerImageVersion)'
-  #     WebAppUri: webAppUrl
-  #     TakeAppOfflineFlag: true
-  #     UseWebDeploy: true
-  #     RenameFilesFlag: true      
