@@ -2,12 +2,13 @@
 
 This project demonstrates a simple car listing browser
 
-The following technologies are used.
+The following technologies/frameworks are used.
 * dotnet 5
 * webapi rest services
 * entity framework core
 * docker
-* kubernetes
+* swagger
+* azure app service
 
 Build and deployment via Azure Pipelines
 
