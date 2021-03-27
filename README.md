@@ -7,7 +7,4 @@ The following technologies are used.
 * webapi rest services
 * entity framework core
 * docker
-* kubernetes
-
-Build and deployment via Azure Pipelines
 
