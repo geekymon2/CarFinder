@@ -10,6 +10,9 @@ variables:
 
   # docker image registry settings
   dockerRegistyService: 'DockerHub'
+  dockerRegistryUrl: 'https://index.docker.io'
+  dockerRegistryUsername: $(DOCKERHUB_USER)
+  dockerRegistryPassword: $(DOCKERHUB_PASS)
 
   # azure subscription
   azureSc: "GeekyMon2AzureRM"
@@ -55,7 +58,7 @@ steps:
       resourceGroupName: '$(resourceGroupName)'
       location: '$(location)'
       csmFile: '$(Pipeline.Workspace)/**/container-webapp-template.json'
-      overrideParameters: '-name $(webAppName) -hostingPlanName $(webAppName) -location "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -serverFarmResourceGroup "CarFinder" -linuxFxVersion "DOTNETCORE|5.0"'
+      overrideParameters: '-name $(webAppName) -hostingPlanName $(webAppName) -location "$(location)" -skuCode "$(skuCode)" -sku "$(sku)" -serverFarmResourceGroup "CarFinder" -linuxFxVersion "DOTNETCORE|5.0" -dockerRegistryUrl $(dockerRegistryUrl) -dockerRegistryUsername $(dockerRegistryUsername) -dockerRegistryPassword $(dockerRegistryPassword)'
 
   # # Deploy App Service
   # - task: AzureRmWebAppDeployment@4
