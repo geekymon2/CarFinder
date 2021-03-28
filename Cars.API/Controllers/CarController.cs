@@ -25,7 +25,7 @@ namespace Geekymon2.CarsApi.Cars.Api.Controllers
         [HttpGet("/api/status")]
         public ActionResult<String> GetStatus()
         {
-            return "Car Finder API is running from Azure App Service.";
+            return "XXXX RUNNING XXXX";
         }
 
         [HttpGet("/api/cars")]
