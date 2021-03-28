@@ -5,6 +5,8 @@ trigger:
 variables:
   buildConfiguration: 'Release'
   dockerRegistyService: 'DockerHub'
+  versionMajor: '1'
+  versionMinor: '0'
 
 pool: Default
 
@@ -28,4 +30,4 @@ steps:
       containerregistrytype: "$(dockerRegistyService)"
       dockerRegistryEndpoint: "$(dockerRegistyService)"
       command: 'Push an image'
-      additionalImageTags: 1.0.$(Build.BuildId)
+      additionalImageTags: "$(versionMajor).$(versionMinor).$(Build.BuildId)"
