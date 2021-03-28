@@ -9,8 +9,5 @@ until ./Cars.EF.Migrations; do
 sleep 1
 done
 
-#start sshd
-/usr/sbin/sshd
-
 >&2 echo "SQL Server is up... Running appliction..."
 exec $run_cmd
