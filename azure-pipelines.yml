@@ -28,4 +28,4 @@ steps:
       containerregistrytype: "$(dockerRegistyService)"
       dockerRegistryEndpoint: "$(dockerRegistyService)"
       command: 'Push an image'
-      additionalImageTags: $(Build.BuildId)
+      additionalImageTags: 1.0.$(Build.BuildId)
