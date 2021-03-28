@@ -3,7 +3,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 LABEL maintainer="geekymon2@gmail.com"
 WORKDIR /app
 EXPOSE 5000
-EXPOSE 2222 80
 ENV ASPNETCORE_URLS=http://*:5000
 ENV ASPNETCORE_ENVIRONMENT=Development
 
@@ -37,6 +36,7 @@ COPY --from=build /app/build/ /app/
 COPY --from=publish /app/publish /publish/
 # Copy the sshd_config file to the /etc/ssh/ directory
 COPY sshd_config /etc/ssh/
+EXPOSE 80 2222
 COPY entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 CMD /bin/bash ./entrypoint.sh
