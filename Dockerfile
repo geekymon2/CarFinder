@@ -3,6 +3,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 LABEL maintainer="geekymon2@gmail.com"
 WORKDIR /app
 EXPOSE 5000
+EXPOSE 2222 80
 ENV ASPNETCORE_URLS=http://*:5000
 ENV ASPNETCORE_ENVIRONMENT=Development
 
