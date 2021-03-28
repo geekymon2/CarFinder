@@ -34,5 +34,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=build /app/build/ /app/
 COPY --from=publish /app/publish /publish/
-ENTRYPOINT ["dotnet", "Cars.Api.dll"]
-CMD /bin/bash ./Cars.EF.Migrations
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+CMD /bin/bash ./entrypoint.sh
