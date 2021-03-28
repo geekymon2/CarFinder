@@ -18,7 +18,7 @@ steps:
       action: 'Build services'
       containerregistrytype: "$(dockerRegistyService)"
       dockerComposeFile: docker-compose.yml
-      additionalImageTags: $(Build.BuildId)
+      additionalImageTags: "$(versionMajor).$(versionMinor).$(Build.BuildId)"
 
   # push the carfinder api image to docker hub
   # note dockerRegistryEndpoint "DockerHub" is configured 
