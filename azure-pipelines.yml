@@ -1,8 +1,7 @@
 trigger:
   branches:
     include:
-    - azuredevops
-
+    - master
 variables:
   buildConfiguration: 'Release'
   dockerRegistyService: 'DockerHub'
