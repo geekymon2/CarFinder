@@ -35,3 +35,4 @@ WORKDIR /app
 COPY --from=build /app/build/ /app/
 COPY --from=publish /app/publish /publish/
 ENTRYPOINT ["dotnet", "Cars.Api.dll"]
+CMD ["/app/Cars.EF.Migrations"]
