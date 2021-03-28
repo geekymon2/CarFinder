@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+    - master
+
+variables:
+  buildConfiguration: 'Release'
+  dockerRegistyService: 'DockerHub'
+
+pool: Default
+
+steps:
+  # build the docker carfinder api image
+  - task: DockerCompose@0
+    displayName: 'Build CarFinder API image'
+    inputs:
+      action: 'Build services'
+      containerregistrytype: "$(dockerRegistyService)"
+      dockerComposeFile: docker-compose.yml
+
+  # push the carfinder api image to docker hub
+  # note dockerRegistryEndpoint "DockerHub" is configured 
+  # as a service connection in AzureDevops Project Setting 
+  - task: DockerCompose@0
+    displayName: 'Push CarFinder API image'
+    inputs:
+      action: 'Push services'
+      containerregistrytype: "$(dockerRegistyService)"
+      dockerRegistryEndpoint: "$(dockerRegistyService)"
+      command: 'Push an image'
