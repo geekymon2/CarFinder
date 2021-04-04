@@ -1,4 +1,7 @@
 steps:
   # running docker-compose
   - name: 'docker/compose:1.28.6'
-    args: ['build', '-t','gcr.io/divine-turbine-007/carfinder:latest']
+    args: ['up', '-d']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['tag', 'carfinder:latest', 'gcr.io/$PROJECT_ID/carfinder:$COMMIT_SHA']
+images: ['gcr.io/$PROJECT_ID/carfinder:$COMMIT_SHA']    
