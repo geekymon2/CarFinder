@@ -3,5 +3,5 @@ steps:
   - name: 'docker/compose:1.28.6'
     args: ['up', '-d']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['tag', 'carfinder:latest', 'gcr.io/$PROJECT_ID/carfinder:$COMMIT_SHA']
+    args: ['tag', 'gcr.io/$PROJECT_ID/carfinder:latest', 'gcr.io/$PROJECT_ID/carfinder:$COMMIT_SHA']
 images: ['gcr.io/$PROJECT_ID/carfinder:$COMMIT_SHA']    
