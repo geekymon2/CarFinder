@@ -7,9 +7,9 @@ steps:
    entrypoint: 'bash'
    args: ['-c', 'docker run $$USERNAME/carfinder:latest']
    secretEnv: ['USERNAME']
- availableSecrets:
-   secretManager:
-   - versionName: projects/802472575906/secrets/dockerhub-username/versions/1
-     env: 'PASSWORD'
-   - versionName: projects/802472575906/secrets/dockerhub-password/versions/1
-     env: 'USERNAME'
+availableSecrets:
+  secretManager:
+  - versionName: projects/802472575906/secrets/dockerhub-username/versions/1
+    env: 'PASSWORD'
+  - versionName: projects/802472575906/secrets/dockerhub-password/versions/1
+    env: 'USERNAME'
