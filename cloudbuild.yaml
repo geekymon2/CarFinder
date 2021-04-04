@@ -1,4 +1,4 @@
 steps:
   # running docker-compose
   - name: 'docker/compose:1.28.6'
-    args: ['build', '-t','gcr.io/802472575906/carfinder:latest']
+    args: ['build', '-t','gcr.io/divine-turbine-007/carfinder:latest']
