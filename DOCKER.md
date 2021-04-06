@@ -1,7 +1,7 @@
 # Docker Helper
 
 ## Dockerfile
-* __build__: docker build -t \<tagname> .
+* __build__: docker build -t \<tagname> -f <dockerfile> .
 * __run__: docker run -p \<localport>:\<remoteport> \<tagname>
 * __list docker images__: docker images ls
 * __push to dockerhub__: docker push \<tagname>
