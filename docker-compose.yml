@@ -1,0 +1,13 @@
+version: "3.9"
+services: 
+  db:
+    hostname: "db"
+    image: "geekymon2/carfinder-db"
+    build: Dockerfile.db
+    environment: 
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "P@ssw0rd"
+    #db container keeps running on port 1433
+    #exposing port 4022 to host db connection
+    ports:
+      - "4022:1433"
