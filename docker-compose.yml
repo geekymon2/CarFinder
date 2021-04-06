@@ -3,7 +3,9 @@ services:
   db:
     hostname: "db"
     image: "geekymon2/carfinder-db"
-    build: Dockerfile.db
+    build:
+        context: .
+        dockerfile: Dockerfile.db
     environment: 
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "P@ssw0rd"
