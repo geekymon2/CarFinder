@@ -1,17 +1,18 @@
 version: "3.9"
 services: 
   web: 
+    restart: always
     image: "geekymon2/carfinder"
     build: .
     #container runs on port 5000
     #container exposing port 80
     ports:
       - "80:5000"
-      - "88:2222"
     depends_on: 
       - db
   db:
     hostname: "db"
+    restart: always
     image: "mcr.microsoft.com/mssql/server"
     environment: 
       ACCEPT_EULA: "Y"

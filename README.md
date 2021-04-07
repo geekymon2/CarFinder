@@ -8,7 +8,6 @@ The following technologies/frameworks are used.
 * entity framework core
 * docker
 * swagger
-* azure app service
 
-Build and deployment via Azure Pipelines
-
+Automatic build via Docker Hub Registry
+Deployment to Vultr cloud compute instance
