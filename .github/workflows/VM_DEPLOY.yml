@@ -12,6 +12,9 @@ jobs:
       - name: Create .env
         run: echo 'PORT=${{ secrets.DB_PORT }}' > .env
         
+      - name: Ensure build is down first
+        run: docker-compose down
+      
       - name: Run build
         run: docker-compose down
         run: docker-compose up -d
