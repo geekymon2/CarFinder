@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Create .env
-        run: echo 'PORT=${{ secrets.PORT }}' > .env
+        run: echo 'PORT=${{ secrets.DB_PORT }}' > .env
         
       - name: Run build
         run: docker-compose up -d
