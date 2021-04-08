@@ -1,0 +1,16 @@
+name: VM_DEPLOY
+
+on:
+  push:
+    branches: [ master ]
+    
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@master
+      - name: Create .env
+        run: echo 'PORT=${{ secrets.PORT }}' > .env
+        
+      - name: Run build
+        run: docker-compose up -d
