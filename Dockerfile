@@ -34,9 +34,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=build /app/build/ /app/
 COPY --from=publish /app/publish /publish/
-# Copy the sshd_config file to the /etc/ssh/ directory
-COPY sshd_config /etc/ssh/
-EXPOSE 80 2222
 COPY entrypoint.sh ./entrypoint.sh
+EXPOSE 80 2222
 RUN chmod +x ./entrypoint.sh
 CMD /bin/bash ./entrypoint.sh
