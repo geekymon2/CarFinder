@@ -28,6 +28,8 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public string Model { get; set; }
         public int Year { get; set; }
         public int Doors { get; set; }
+        public double Price { get; set; }
+        public int Odometer { get; set; }
         
         [Column(TypeName = "nvarchar(128)")]
         public BodyType BodyType { get; set; }

@@ -10,5 +10,5 @@ The following technologies/frameworks are used.
 * sql server
 * swagger
 
-Automatic iamge build and tagging to Docker Hub Registry
+Automatic image build and tagging to Docker Hub Registry
 Automatic build and deployment to Vultr cloud compute instance via GitHub actions
