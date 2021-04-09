@@ -12,7 +12,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
             ID = id;            
         }
 
-        public Car(string id, string make, string model, int year, int doors, string bodyType, string transmission)
+        public Car(string id, string make, string model, int year, int doors, string bodyType, string transmission, double price, int odo)
         {
             ID = id;            
             Make = make;
@@ -21,6 +21,8 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
             Doors = doors;
             BodyType = (BodyType)System.Enum.Parse(typeof(BodyType),bodyType);
             Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),transmission);
+            Price = price;
+            Odometer = odo;
         }
 
         public string ID {get; set; }

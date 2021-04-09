@@ -28,6 +28,8 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
                     Model = c.Model,
                     Year = c.Year,
                     Doors = c.Doors,
+                    Odometer = c.Odometer,
+                    Price = c.Price,
                     Transmission = c.Transmission.ToString(),
                     BodyType = c.BodyType.ToString()
                 };
@@ -38,7 +40,7 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
         public CarDTO AddCar(CarDTO carItem)
         {
 
-            var c = new Car(carItem.ID,carItem.Make, carItem.Model, carItem.Year, carItem.Doors, carItem.BodyType, carItem.Transmission);
+            var c = new Car(carItem.ID,carItem.Make, carItem.Model, carItem.Year, carItem.Doors, carItem.BodyType, carItem.Transmission, carItem.Price, carItem.Odometer);
             _carContext.Add(c);
             _carContext.SaveChanges();
             _logger.LogInformation(carItem.ToString() + "Total: {0}", _carContext.Cars.Count());
@@ -59,6 +61,8 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
                 c.Doors = car.Doors;
                 c.Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),car.Transmission);
                 c.BodyType = (BodyType)System.Enum.Parse(typeof(BodyType),car.BodyType);
+                c.Price = car.Price;
+                c.Odometer = car.Odometer;
                 _carContext.SaveChanges();
             }
 
