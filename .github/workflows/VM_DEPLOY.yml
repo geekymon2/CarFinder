@@ -10,8 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Create .env
-        run: echo 'PORT=${{ secrets.DB_PORT }}' > .env
-        
+        run: >
+          echo 'DB_PORT=${{ secrets.DB_PORT }}' > .env
+          echo 'DB_PASSWORD=${{ secrets.DB_PASSWORD }}' > .env
+          echo 'DB_USER=${{ secrets.DB_USER }}' > .env
+          echo 'APP_PORT=${{ secrets.APP_PORT }}' > .env
+
       - name: Ensure build is down first
         run: docker-compose down
       

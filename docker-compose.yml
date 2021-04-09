@@ -7,7 +7,7 @@ services:
     #container runs on port 5000
     #container exposing port 80
     ports:
-      - "${APP_PORT:-1403}:5000"
+      - "${APP_PORT:-80}:5000"
     depends_on: 
       - db
   db:
