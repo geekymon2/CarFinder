@@ -9,11 +9,14 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@master
-      - name: Create .env
+      - name: Create .env properties
         run: echo $'DB_PORT=${{ secrets.DB_PORT }}\nDB_PASSWORD=${{ secrets.DB_PASSWORD }}\nDB_USER=${{ secrets.DB_USER }}\nAPP_PORT=${{ secrets.APP_PORT }}' > .env
 
-      - name: Ensure build is down first
+      - name: First ensure that the build is down
         run: docker-compose down
       
-      - name: Run build
+      - name: Run the build
+        run: docker-compose build
+
+      - name: Start docker compose
         run: docker-compose up -d
