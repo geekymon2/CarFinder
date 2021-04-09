@@ -18,7 +18,7 @@ services:
     image: "mcr.microsoft.com/mssql/server"
     environment: 
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "${DB_PASSWORD}"
+      SA_PASSWORD: "${DB_PASSWORD:-P@ssw0rd}"
     #db container keeps running on port 1433
     #exposing port 1403 to host db connection
     ports:
