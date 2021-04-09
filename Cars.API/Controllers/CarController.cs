@@ -25,7 +25,7 @@ namespace Geekymon2.CarsApi.Cars.Api.Controllers
         [HttpGet("/api/status")]
         public ActionResult<String> GetStatus()
         {
-            return "API is Running.....";
+            return "Car Finder API is Running...";
         }
 
         [HttpGet("/api/cars")]
