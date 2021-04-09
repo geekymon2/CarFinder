@@ -7,7 +7,8 @@ The following technologies/frameworks are used.
 * webapi rest services
 * entity framework core
 * docker
+* sql server
 * swagger
 
-Automatic build via Docker Hub Registry
-Deployment to Vultr cloud compute instance
+Automatic iamge build and tagging to Docker Hub Registry
+Automatic build and deployment to Vultr cloud compute instance via GitHub actions
