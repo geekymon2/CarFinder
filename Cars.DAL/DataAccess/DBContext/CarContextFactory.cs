@@ -13,6 +13,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.DBContext
             IConfiguration configuration = new ConfigurationBuilder()
                  .SetBasePath(Directory.GetCurrentDirectory())
                  .AddJsonFile("appsettings.json")
+                 .AddEnvironmentVariables()
                  .Build();
 
             var dbContextBuilder = new DbContextOptionsBuilder<CarContext>();
