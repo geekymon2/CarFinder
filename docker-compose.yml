@@ -9,7 +9,7 @@ services:
     ports:
       - "${APP_PORT:-80}:5000"
     environment:
-      - ASPNETCORE_ConnectionStrings__DefaultConnection=Server=db,${DB_PORT};Database=Cars;User Id=${DB_USER};Password=${DB_PASSWORD};
+      - ASPNETCORE_ConnectionStrings_DefaultConnection=Server=db,${DB_PORT};Database=Cars;User Id=${DB_USER};Password=${DB_PASSWORD};
     depends_on: 
       - db
   db:
