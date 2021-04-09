@@ -5,11 +5,10 @@ services:
     image: "geekymon2/carfinder"
     build: .
     #container runs on port 5000
-    #container exposing port 80
+    #container exposing port 8080 locally
+    #container overrides APP_PORT when deployed
     ports:
-      - "${APP_PORT:-80}:5000"
-    environment:
-      - ConnectionStrings__DefaultConnection=Server=db,${DB_PORT};Database=Cars;User Id=${DB_USER};Password=${DB_PASSWORD};
+      - "${APP_PORT:-8080}:5000"
     depends_on: 
       - db
   db:
@@ -19,7 +18,8 @@ services:
     environment: 
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "${DB_PASSWORD:-P@ssw0rd}"
-    #db container keeps running on port 1433
-    #exposing port 1403 to host db connection
+    #db container runs on port 1433
+    #db container exposing port 1403 locally
+    #db container overrides DB_PORT when deployed
     ports:
       - "${DB_PORT:-1403}:1433"
