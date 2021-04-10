@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1",
+        "make": "Ford",
+        "model": "Falcon",
+        "year": 2009,
+        "doors": 5,
+        "bodyType": "SEDAN",
+        "transmission": "AUTOMATIC",
+        "price": 12000,
+        "odometer": 140000
+    },
+    {
+        "id": "2",
+        "make": "Mazda",
+        "model": "323",
+        "year": 1995,
+        "doors": 5,
+        "bodyType": "SEDAN",
+        "transmission": "AUTOMATIC",
+        "price": 5300,
+        "odometer": 250000
+    },
+    {
+        "id": "3",
+        "make": "Toyota",
+        "model": "Aurion",
+        "year": 2006,
+        "doors": 5,
+        "bodyType": "SEDAN",
+        "transmission": "AUTOMATIC",
+        "price": 4500,
+        "odometer": 145000
+    },
+    {
+        "id": "4",
+        "make": "Hyundai",
+        "model": "Tucson",
+        "year": 2020,
+        "doors": 5,
+        "bodyType": "SUV",
+        "transmission": "AUTOMATIC",
+        "price": 29500,
+        "odometer": 0
+    }           
+]

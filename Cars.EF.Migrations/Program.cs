@@ -10,7 +10,7 @@ namespace Cars.EF.Migrations
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Applying EF migrations........");
+            Console.WriteLine("Applying EF migrations.....");
             var webHost = new WebHostBuilder()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseStartup<ConsoleStartup>()
@@ -20,8 +20,13 @@ namespace Cars.EF.Migrations
                 //drop and recreate the whole database.
                 context.Database.EnsureDeleted();
                 context.Database.Migrate();
-            }            
+            }   
             Console.WriteLine("Applying EF migrations Completed.");
+
+            Console.WriteLine("Seeding Initial Data.....");
+            var dataText=System.IO.File.ReadAllText(@"carsdataseed.json");
+            Seeder.Seedit(dataText, webHost.Services);         
+            Console.WriteLine("Seeding Data Completed.");
         }
     }
 }
