@@ -4,13 +4,14 @@ services:
     restart: always
     image: "geekymon2/carfinder"
     environment:
-      - ConnectionStrings__DefaultConnection=Server=db,${DB_PORT};Database=Cars;User Id=${DB_USER};Password=${DB_PASSWORD};    
+      - ConnectionStrings__DefaultConnection=Server=db,${DB_PORT_CONTAINER};Database=Cars;User Id=${DB_USER};Password=${DB_PASSWORD};    
     build: .
+    #local setup
     #container runs on port 5000
-    #container exposing port 8080 locally
-    #container overrides APP_PORT when deployed
+    #container exposing port 8080
+    #container overrides APP_PORT and APP_PORT_CONTAINER when deployed
     ports:
-      - "${APP_PORT:-8080}:5000"
+      - "${APP_PORT:-8080}:${APP_PORT_CONTAINER:-5000}"
     depends_on: 
       - db
   db:
@@ -20,15 +21,20 @@ services:
     environment: 
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "${DB_PASSWORD:-P@ssw0rd}"
+    #local setup
     #db container runs on port 1433
-    #db container exposing port 1403 locally
-    #db container overrides DB_PORT when deployed
+    #db container exposing port 1403
+    #db container overrides DB_PORT and DB_PORT_CONTAINER when deployed
     ports:
-      - "${DB_PORT:-1403}:1433"
+      - "${DB_PORT:-1403}:${DB_PORT_CONTAINER:-1433}"
   dozzle:
     container_name: dozzle
     image: amir20/dozzle:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    #local setup
+    #dozzle container runs on port 8080
+    #dozzle container exposing port 88
+    #dozzle container overrides DOZZLE_PORT and DOZZLE_PORT_CONTAINER when deployed      
     ports:
-      - ${DOZZLE_PORT:-88}:8080
+      - ${DOZZLE_PORT:-88}:${DOZZLE_PORT_CONTAINER:-8080}
