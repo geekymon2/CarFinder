@@ -1,5 +1,0 @@
-version: "3.9"
-services: 
-  web: 
-    environment:
-      - ConnectionStrings__DefaultConnection=Server=db,${DB_PORT};Database=Cars;User Id=${DB_USER};Password=${DB_PASSWORD};

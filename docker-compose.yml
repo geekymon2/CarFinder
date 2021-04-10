@@ -3,6 +3,8 @@ services:
   web: 
     restart: always
     image: "geekymon2/carfinder"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db,${DB_PORT};Database=Cars;User Id=${DB_USER};Password=${DB_PASSWORD};    
     build: .
     #container runs on port 5000
     #container exposing port 8080 locally

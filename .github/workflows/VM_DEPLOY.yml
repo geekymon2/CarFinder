@@ -19,5 +19,5 @@ jobs:
         run: docker-compose build
 
       - name: Start docker compose
-        run: docker-compose -f docker-compose.yml -f docker-compose-deploy.yml up -d
+        run: docker-compose up -d
         
