@@ -5,4 +5,3 @@
 * __Verify Installation__: dotnet ef
 * __Create EF Migration__: dotnet ef migrations add "name"
 * __Update Database__: dotnet ef database update
-
