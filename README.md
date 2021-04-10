@@ -2,6 +2,8 @@
 
 This project demonstrates a simple car listing browser
 
+Backend API
+
 The following technologies/frameworks are used.
 * dotnet 5
 * webapi rest services
@@ -10,5 +12,9 @@ The following technologies/frameworks are used.
 * sql server
 * swagger
 
-Automatic image build and tagging to Docker Hub Registry
-Automatic build and deployment to Vultr cloud compute instance via GitHub actions
+
+### Automatic image build and tagging to Docker Hub Registry
+
+### Automatic build and deployment to Vultr cloud compute instance via GitHub actions
+
+[![VM_DEPLOY](https://github.com/geekymon2/CarFinder/actions/workflows/VM_DEPLOY.yml/badge.svg)](https://github.com/geekymon2/CarFinder/actions/workflows/VM_DEPLOY.yml)
