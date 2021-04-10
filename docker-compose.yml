@@ -23,3 +23,10 @@ services:
     #db container overrides DB_PORT when deployed
     ports:
       - "${DB_PORT:-1403}:1433"
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - ${DOZZLE_PORT:-88}:8080
