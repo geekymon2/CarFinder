@@ -4,7 +4,7 @@ set -e
 run_cmd="dotnet Cars.Api.dll"
 
 #lets wait 3 seconds for things to startup
-sleep 3
+sleep 5
 
 # Apply EF migrations
 until ./Cars.EF.Migrations; do

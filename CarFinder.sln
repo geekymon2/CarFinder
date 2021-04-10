@@ -12,12 +12,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.DAL", "Cars.DAL\Cars.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A26B2281-C5C7-4695-801C-63BA56CCEA56}"
 	ProjectSection(SolutionItems) = preProject
-		azure-pipelines.yml = azure-pipelines.yml
+		docker-compose.yml = docker-compose.yml
+		DOCKER.md = DOCKER.md
 		Dockerfile = Dockerfile
+		entrypoint.sh = entrypoint.sh
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.EF.Migrations", "Cars.EF.Migrations\Cars.EF.Migrations.csproj", "{A454261A-386F-435A-BB87-5EBA13DAAD74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.EF.Migrations", "Cars.EF.Migrations\Cars.EF.Migrations.csproj", "{A454261A-386F-435A-BB87-5EBA13DAAD74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
