@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
@@ -12,7 +13,8 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
             ID = id;            
         }
 
-        public Car(string id, string make, string model, int year, int doors, string bodyType, string transmission, double price, int odo, Engine engine)
+        public Car(string id, string make, string model, int year, int doors, string bodyType, string transmission, double price, int odo, 
+        int cylinders, int size, int power, string desc)
         {
             ID = id;            
             Make = make;
@@ -23,17 +25,28 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
             Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),transmission);
             Price = price;
             Odometer = odo;
-            Engine = engine;
+            Cylinders = cylinders;
+            Size = size;
+            Power = power;
+            Description = desc;
         }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [StringLength(255)]
         public string ID {get; set; }
+
         public string Make { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
         public int Doors { get; set; }
         public double Price { get; set; }
         public int Odometer { get; set; }
-        public Engine Engine { get; set; }        
+        public int Cylinders { get; set; }
+        public int Size { get; set; }
+        public int Power { get; set; }  
+        public string Description { get; set; } 
+     
 
         [Column(TypeName = "nvarchar(128)")]
         public BodyType BodyType { get; set; }
@@ -42,8 +55,9 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public Transmission Transmission { get; set; }
 
         public override string ToString() {
-            return string.Format("Entity Car: id={0}, make={1}, model={2}, year={3}, doors={4}, bodytype={5}, transmission={6}, price={7}, odometer={8}, engine={9}", 
-            ID, Make, Model, Year, Doors, BodyType, Transmission, Price, Odometer, Engine.ToString());
+            return string.Format("Entity Car: id={}, make={}, model={}, year={}, doors={}, bodytype={}, transmission={}, price={}, odometer={}," +
+            "cylinders={}, size={}, power={}, desc={}", 
+            ID, Make, Model, Year, Doors, BodyType, Transmission, Price, Odometer, Cylinders, Size, Power, Description);
         }
     }
 }

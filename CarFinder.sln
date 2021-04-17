@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cars.EF.Migrations", "Cars.EF.Migrations\Cars.EF.Migrations.csproj", "{A454261A-386F-435A-BB87-5EBA13DAAD74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.DAL.Test", "Cars.DAL.Test\Cars.DAL.Test.csproj", "{E37C0B30-E383-4E9B-9896-D0FC2410B72C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A454261A-386F-435A-BB87-5EBA13DAAD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A454261A-386F-435A-BB87-5EBA13DAAD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A454261A-386F-435A-BB87-5EBA13DAAD74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E37C0B30-E383-4E9B-9896-D0FC2410B72C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E37C0B30-E383-4E9B-9896-D0FC2410B72C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E37C0B30-E383-4E9B-9896-D0FC2410B72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E37C0B30-E383-4E9B-9896-D0FC2410B72C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

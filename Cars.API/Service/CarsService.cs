@@ -39,10 +39,8 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
 
         public CarDTO AddCar(CarDTO carItem)
         {
-            var e = new Engine();
-
             var c = new Car(carItem.ID, carItem.Make, carItem.Model, carItem.Year, carItem.Doors, carItem.BodyType, carItem.Transmission, 
-            carItem.Price, carItem.Odometer, e);
+            carItem.Price, carItem.Odometer, carItem.Cylinders, carItem.Size, carItem.Power, carItem.Description);
             _carContext.Add(c);
             _carContext.SaveChanges();
             _logger.LogInformation(carItem.ToString() + "Total: {0}", _carContext.Cars.Count());
