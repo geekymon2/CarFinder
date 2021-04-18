@@ -55,9 +55,8 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public Transmission Transmission { get; set; }
 
         public override string ToString() {
-            return string.Format("Entity Car: id={}, make={}, model={}, year={}, doors={}, bodytype={}, transmission={}, price={}, odometer={}," +
-            "cylinders={}, size={}, power={}, desc={}", 
-            ID, Make, Model, Year, Doors, BodyType, Transmission, Price, Odometer, Cylinders, Size, Power, Description);
+            return $"Entity Car: id={ID}, make={Make}, model={Model}, year={Year}, doors={Doors}, bodytype={BodyType}, transmission={Transmission}, price={Price}, odometer={Odometer}," +
+            $"cylinders={Cylinders}, size={Size}, power={Power}, desc={Description}";
         }
     }
 }
