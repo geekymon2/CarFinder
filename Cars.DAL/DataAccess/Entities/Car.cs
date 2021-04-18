@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -40,13 +41,23 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public Make Make { get; set; }
 
         public string Model { get; set; }
+
         public int Year { get; set; }
+
         public int Doors { get; set; }
+
+        public int Seats { get; set; }
+
         public double Price { get; set; }
+
         public int Odometer { get; set; }
+
         public int Cylinders { get; set; }
+
         public int Size { get; set; }
+
         public int Power { get; set; }  
+
         public string Description { get; set; } 
      
         [Column(TypeName = "nvarchar(128)")]
@@ -54,6 +65,8 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         
         [Column(TypeName = "nvarchar(128)")]
         public Transmission Transmission { get; set; }
+
+        public List<Feature> Features { get; set; }
 
         public override string ToString() {
             return $"Entity Car: id={ID}, make={Make}, model={Model}, year={Year}, doors={Doors}, bodytype={BodyType}, transmission={Transmission}, price={Price}, odometer={Odometer}," +
