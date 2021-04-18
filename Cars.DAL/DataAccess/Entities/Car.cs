@@ -35,7 +35,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [StringLength(255)]
-        public string ID {get; set; }
+        public string ID { get; set; }
 
         [Column(TypeName = "nvarchar(128)")]
         public Make Make { get; set; }
