@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using Geekymon2.CarsApi.Cars.DAL.DataAccess.DBContext;
-using Geekymon2.CarsApi.Cars.Api.Models;
+using Geekymon2.CarsApi.Cars.API.Models;
 using Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities;
 
-namespace Geekymon2.CarsApi.Cars.Api.Service
+namespace Geekymon2.CarsApi.Cars.API.Service
 {
     public class CarsService : ICarsService
     {
@@ -30,7 +30,7 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
                     Doors = c.Doors,
                     Odometer = c.Odometer,
                     Price = c.Price,
-                    Transmission = c.Transmission.ToString(),
+                    //Transmission = c.Transmission.ToString(),
                     BodyType = c.BodyType.ToString()
                 };
 
@@ -39,8 +39,22 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
 
         public CarDTO AddCar(CarDTO carItem)
         {
-            var c = new Car(carItem.ID, carItem.Make, carItem.Model, carItem.Year, carItem.Doors, carItem.BodyType, carItem.Transmission, 
-            carItem.Price, carItem.Odometer, carItem.Cylinders, carItem.Size, carItem.Power, carItem.Description);
+            Make make = (Make)System.Enum.Parse(typeof(Make),carItem.Make);
+            BodyType bodyType = (BodyType)System.Enum.Parse(typeof(BodyType),carItem.BodyType);
+            CylinderConfiguration cylinderConfig = (CylinderConfiguration)System.Enum.Parse(typeof(CylinderConfiguration),carItem.EngineDTO.CylinderConfig);
+            DriveType drive = (DriveType)System.Enum.Parse(typeof(DriveType),carItem.EngineDTO.DriveType);
+            FuelType fuel = (FuelType)System.Enum.Parse(typeof(FuelType),carItem.EngineDTO.FuelType);
+
+            TransmissionType transmissionType = (TransmissionType)System.Enum.Parse(typeof(TransmissionType),carItem.TransmissionDTO.Type);
+            TransmissionTypeDetail transmissionTypeDetail = (TransmissionTypeDetail)System.Enum.Parse(typeof(TransmissionTypeDetail),carItem.TransmissionDTO.Detail);
+
+            Engine e = new Engine(carItem.EngineDTO.ID, carItem.EngineDTO.NoOfCylinders, carItem.EngineDTO.EngineSizeCC, carItem.EngineDTO.PowerKW, cylinderConfig, 
+            drive, fuel, carItem.EngineDTO.FuelEconomy, carItem.EngineDTO.PowerToWeight);
+
+            Transmission t = new Transmission(carItem.TransmissionDTO.ID, transmissionType, transmissionTypeDetail, carItem.TransmissionDTO.Gears);
+            List<Feature> features = new List<Feature>();
+
+            var c = new Car(carItem.ID, make, carItem.Model, carItem.Year, carItem.Doors, carItem.Seats, carItem.Price, carItem.Odometer, carItem.Description, e, bodyType, t, features);
             _carContext.Add(c);
             _carContext.SaveChanges();
             _logger.LogInformation(carItem.ToString() + "Total: {0}", _carContext.Cars.Count());
@@ -59,7 +73,7 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
                 c.Model = car.Model;
                 c.Year = car.Year;
                 c.Doors = car.Doors;
-                c.Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),car.Transmission);
+                //c.Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),car.Transmission);
                 c.BodyType = (BodyType)System.Enum.Parse(typeof(BodyType),car.BodyType);
                 c.Price = car.Price;
                 c.Odometer = car.Odometer;

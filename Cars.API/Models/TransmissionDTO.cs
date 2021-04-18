@@ -1,13 +1,13 @@
-namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
+namespace Geekymon2.CarsApi.Cars.API.Models
 {
-    public class Transmission
+    public class TransmissionDTO
     {
         public string ID { get; set; }
-        public TransmissionType Type { get; set; }
-        public TransmissionTypeDetail Detail { get; set; }
+        public string Type { get; set; }
+        public string Detail { get; set; }
         public int Gears { get; set; }
 
-        public Transmission(string id, TransmissionType type, TransmissionTypeDetail detail, int gears)
+        public TransmissionDTO(string id, string type, string detail, int gears)
         {
             ID = id;
             Type = type;
@@ -17,6 +17,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
 
         public override string ToString() {
             return $"Entity Transmission: id={ID}, type={Type}, detail={Detail}, gears={Gears}";
-        }         
+        }           
+        
     }
 }

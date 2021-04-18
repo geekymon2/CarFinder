@@ -6,8 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Geekymon2.CarsApi.Cars.Api.Service;
-using Geekymon2.CarsApi.Cars.Api.Exception;
+using Geekymon2.CarsApi.Cars.API.Service;
+using Geekymon2.CarsApi.Cars.API.Exception;
 using Geekymon2.CarsApi.Cars.DAL.DataAccess.DBContext;
 
 namespace Geekymon2.CarsApi.Cars.Api

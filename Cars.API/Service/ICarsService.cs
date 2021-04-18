@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Geekymon2.CarsApi.Cars.Api.Models;
+using Geekymon2.CarsApi.Cars.API.Models;
 
-namespace Geekymon2.CarsApi.Cars.Api.Service
+namespace Geekymon2.CarsApi.Cars.API.Service
 {
     public interface ICarsService
     {

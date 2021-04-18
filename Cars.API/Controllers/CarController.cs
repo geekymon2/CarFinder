@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
-using Geekymon2.CarsApi.Cars.Api.Models;
-using Geekymon2.CarsApi.Cars.Api.Service;
+using Geekymon2.CarsApi.Cars.API.Models;
+using Geekymon2.CarsApi.Cars.API.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Geekymon2.CarsApi.Cars.Api.Controllers
+namespace Geekymon2.CarsApi.Cars.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

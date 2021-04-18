@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Geekymon2.CarsApi.Cars.Api.Models
+namespace Geekymon2.CarsApi.Cars.API.Models
 {
     public class ErrorDetails
     {

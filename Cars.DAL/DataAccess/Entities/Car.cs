@@ -14,22 +14,22 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
             ID = id;            
         }
 
-        public Car(string id, string make, string model, int year, int doors, string bodyType, string transmission, double price, int odo, 
-        int cylinders, int size, int power, string desc)
+        public Car(string id, Make make, string model, int year, int doors, int seats, double price, int odo, string desc, 
+        Engine engine, BodyType bodyType, Transmission transmission, List<Feature> featureList)
         {
             ID = id;            
-            Make = (Make)System.Enum.Parse(typeof(Make),make);;
+            Make = make;
             Model = model;
             Year = year;
             Doors = doors;
-            BodyType = (BodyType)System.Enum.Parse(typeof(BodyType),bodyType);
-            Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),transmission);
+            Seats = seats;
             Price = price;
             Odometer = odo;
-            Cylinders = cylinders;
-            Size = size;
-            Power = power;
             Description = desc;
+            Engine = engine;
+            BodyType = bodyType;
+            Transmission = transmission;
+            FeatureList = featureList;
         }
 
         [Key]
@@ -52,13 +52,9 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
 
         public int Odometer { get; set; }
 
-        public int Cylinders { get; set; }
-
-        public int Size { get; set; }
-
-        public int Power { get; set; }  
-
         public string Description { get; set; } 
+
+        public Engine Engine { get; set; }
      
         [Column(TypeName = "nvarchar(128)")]
         public BodyType BodyType { get; set; }
@@ -66,11 +62,11 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         [Column(TypeName = "nvarchar(128)")]
         public Transmission Transmission { get; set; }
 
-        public List<Feature> Features { get; set; }
+        public List<Feature> FeatureList { get; set; }
 
         public override string ToString() {
-            return $"Entity Car: id={ID}, make={Make}, model={Model}, year={Year}, doors={Doors}, bodytype={BodyType}, transmission={Transmission}, price={Price}, odometer={Odometer}," +
-            $"cylinders={Cylinders}, size={Size}, power={Power}, desc={Description}";
+            return $"Entity Car: id={ID}, make={Make}, model={Model}, year={Year}, doors={Doors}, seats={Seats}, price={Price}, odometer={Odometer}," +
+            $"desc={Description}, engine={Engine}, body={BodyType}, transmission={Transmission}, features={FeatureList}";
         }
     }
 }
