@@ -25,8 +25,8 @@ namespace Geekymon2.CarsApi.Cars.Api.Models
         public string Description { get; set; } 
 
         public override string ToString() {
-            return string.Format("CarDTO: id:{0}, make:{1}, model:{2}, year:{3}, price:{4}, odo:{5}, engine:{6} ", 
-            ID, Make, Model, Year, Price, Odometer, Cylinders, Size, Power, Description);
+            return $"CarDTO: id={ID}, make={Make}, model={Model}, year={Year}, doors={Doors}, bodytype={BodyType}, transmission={Transmission}, price={Price}, odometer={Odometer}," +
+            $"cylinders={Cylinders}, size={Size}, power={Power}, desc={Description}";
         }
     }
 }
