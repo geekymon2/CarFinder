@@ -24,7 +24,7 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
                 select new CarDTO()
                 {
                     ID = c.ID,
-                    Make = c.Make,
+                    Make = c.Make.ToString(),
                     Model = c.Model,
                     Year = c.Year,
                     Doors = c.Doors,
@@ -55,7 +55,7 @@ namespace Geekymon2.CarsApi.Cars.Api.Service
             );
 
             if (c != null) {
-                c.Make = car.Make;
+                c.Make = (Make)System.Enum.Parse(typeof(Make),car.Make);
                 c.Model = car.Model;
                 c.Year = car.Year;
                 c.Doors = car.Doors;

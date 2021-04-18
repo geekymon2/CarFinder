@@ -17,7 +17,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         int cylinders, int size, int power, string desc)
         {
             ID = id;            
-            Make = make;
+            Make = (Make)System.Enum.Parse(typeof(Make),make);;
             Model = model;
             Year = year;
             Doors = doors;
@@ -36,7 +36,9 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         [StringLength(255)]
         public string ID {get; set; }
 
-        public string Make { get; set; }
+        [Column(TypeName = "nvarchar(128)")]
+        public Make Make { get; set; }
+
         public string Model { get; set; }
         public int Year { get; set; }
         public int Doors { get; set; }
@@ -47,7 +49,6 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public int Power { get; set; }  
         public string Description { get; set; } 
      
-
         [Column(TypeName = "nvarchar(128)")]
         public BodyType BodyType { get; set; }
         
