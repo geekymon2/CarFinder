@@ -12,6 +12,14 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public double FuelEconomy { get; set; }
         public double PowerToWeight { get; set; }
 
+        public Engine()
+        {}
+
+        public Engine(string id)
+        {
+            ID = id;            
+        }
+
         public Engine(string id, int noOfCylinders, int engineSizeCC, int powerKW, CylinderConfiguration config, DriveType drive, FuelType fuel, double economy, double powerToWeight)
         {
             ID = id;

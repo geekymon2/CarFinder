@@ -29,14 +29,14 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<int>("Cylinders")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Doors")
                         .HasColumnType("int");
+
+                    b.Property<string>("EngineID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Make")
                         .IsRequired()
@@ -48,16 +48,10 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                     b.Property<int>("Odometer")
                         .HasColumnType("int");
 
-                    b.Property<int>("Power")
-                        .HasColumnType("int");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
                     b.Property<int>("Seats")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.Property<string>("TransmissionID")
@@ -68,9 +62,45 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("EngineID");
+
                     b.HasIndex("TransmissionID");
 
                     b.ToTable("Cars");
+                });
+
+            modelBuilder.Entity("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Engine", b =>
+                {
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CylinderConfig")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DriveType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EngineSizeCC")
+                        .HasColumnType("int");
+
+                    b.Property<double>("FuelEconomy")
+                        .HasColumnType("float");
+
+                    b.Property<int>("FuelType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NoOfCylinders")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PowerKW")
+                        .HasColumnType("int");
+
+                    b.Property<double>("PowerToWeight")
+                        .HasColumnType("float");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Engine");
                 });
 
             modelBuilder.Entity("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Feature", b =>
@@ -115,9 +145,15 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
 
             modelBuilder.Entity("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Car", b =>
                 {
+                    b.HasOne("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Engine", "Engine")
+                        .WithMany()
+                        .HasForeignKey("EngineID");
+
                     b.HasOne("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Transmission", "Transmission")
                         .WithMany()
                         .HasForeignKey("TransmissionID");
+
+                    b.Navigation("Engine");
 
                     b.Navigation("Transmission");
                 });
@@ -125,13 +161,13 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
             modelBuilder.Entity("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Feature", b =>
                 {
                     b.HasOne("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Car", null)
-                        .WithMany("Features")
+                        .WithMany("FeatureList")
                         .HasForeignKey("CarID");
                 });
 
             modelBuilder.Entity("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Car", b =>
                 {
-                    b.Navigation("Features");
+                    b.Navigation("FeatureList");
                 });
 #pragma warning restore 612, 618
         }

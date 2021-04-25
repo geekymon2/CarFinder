@@ -7,6 +7,25 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Engine",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    NoOfCylinders = table.Column<int>(type: "int", nullable: false),
+                    EngineSizeCC = table.Column<int>(type: "int", nullable: false),
+                    PowerKW = table.Column<int>(type: "int", nullable: false),
+                    CylinderConfig = table.Column<int>(type: "int", nullable: false),
+                    DriveType = table.Column<int>(type: "int", nullable: false),
+                    FuelType = table.Column<int>(type: "int", nullable: false),
+                    FuelEconomy = table.Column<double>(type: "float", nullable: false),
+                    PowerToWeight = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Engine", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Transmission",
                 columns: table => new
                 {
@@ -32,16 +51,20 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                     Seats = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Odometer = table.Column<int>(type: "int", nullable: false),
-                    Cylinders = table.Column<int>(type: "int", nullable: false),
-                    Size = table.Column<int>(type: "int", nullable: false),
-                    Power = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EngineID = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     BodyType = table.Column<string>(type: "nvarchar(128)", nullable: false),
                     TransmissionID = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cars", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Cars_Engine_EngineID",
+                        column: x => x.EngineID,
+                        principalTable: "Engine",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Cars_Transmission_TransmissionID",
                         column: x => x.TransmissionID,
@@ -71,6 +94,11 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cars_EngineID",
+                table: "Cars",
+                column: "EngineID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Cars_TransmissionID",
                 table: "Cars",
                 column: "TransmissionID");
@@ -88,6 +116,9 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cars");
+
+            migrationBuilder.DropTable(
+                name: "Engine");
 
             migrationBuilder.DropTable(
                 name: "Transmission");

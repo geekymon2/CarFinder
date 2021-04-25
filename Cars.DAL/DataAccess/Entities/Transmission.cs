@@ -7,6 +7,14 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public TransmissionTypeDetail Detail { get; set; }
         public int Gears { get; set; }
 
+        public Transmission()
+        {}
+
+        public Transmission(string id)
+        {
+            ID = id;            
+        }
+
         public Transmission(string id, TransmissionType type, TransmissionTypeDetail detail, int gears)
         {
             ID = id;
