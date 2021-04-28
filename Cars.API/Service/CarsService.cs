@@ -59,6 +59,11 @@ namespace Geekymon2.CarsApi.Cars.API.Service
             _carContext.SaveChanges();
             _logger.LogInformation(carItem.ToString() + "Total: {0}", _carContext.Cars.Count());
 
+            //populate the dto identity after the record is saved.
+            carItem.ID = c.ID;
+            carItem.EngineDTO.ID = c.Engine.ID;
+            carItem.TransmissionDTO.ID = c.Transmission.ID;
+
             return carItem;
         }
 
@@ -73,10 +78,17 @@ namespace Geekymon2.CarsApi.Cars.API.Service
                 c.Model = car.Model;
                 c.Year = car.Year;
                 c.Doors = car.Doors;
-                //c.Transmission = (Transmission)System.Enum.Parse(typeof(Transmission),car.TransmissionDTO.);
+                c.Seats = car.Seats;
                 c.BodyType = (BodyType)System.Enum.Parse(typeof(BodyType),car.BodyTypeDTO.ToString());
+
                 c.Price = car.Price;
                 c.Odometer = car.Odometer;
+                c.Description = car.Description;
+
+                c.Transmission.Gears = car.TransmissionDTO.Gears;
+                c.Transmission.Type = (TransmissionType)System.Enum.Parse(typeof(TransmissionType),car.TransmissionDTO.TransmissionTypeDTO.ToString());
+                c.Transmission.Detail = (TransmissionTypeDetail)System.Enum.Parse(typeof(TransmissionTypeDetail),car.TransmissionDTO.TransmissionTypeDetailDTO.ToString());
+
                 _carContext.SaveChanges();
             }
 
