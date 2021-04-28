@@ -1,7 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
 {
     public class Transmission
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [StringLength(255)]
         public string ID { get; set; }
         public TransmissionType Type { get; set; }
         public TransmissionTypeDetail Detail { get; set; }

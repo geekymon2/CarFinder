@@ -3,8 +3,8 @@ namespace Geekymon2.CarsApi.Cars.API.Models
     public class TransmissionDTO
     {
         public string ID { get; set; }
-        public string Type { get; set; }
-        public string Detail { get; set; }
+        public TransmissionTypeDTO TransmissionTypeDTO { get; set; }
+        public TransmissionTypeDetailDTO TransmissionTypeDetailDTO { get; set; }
         public int Gears { get; set; }
 
         public TransmissionDTO()
@@ -15,16 +15,16 @@ namespace Geekymon2.CarsApi.Cars.API.Models
             ID = id;            
         }          
 
-        public TransmissionDTO(string id, string type, string detail, int gears)
+        public TransmissionDTO(string id, TransmissionTypeDTO type, TransmissionTypeDetailDTO detail, int gears)
         {
             ID = id;
-            Type = type;
-            Detail = detail;
+            TransmissionTypeDTO = type;
+            TransmissionTypeDetailDTO = detail;
             Gears = gears;            
         }
 
         public override string ToString() {
-            return $"Entity Transmission: id={ID}, type={Type}, detail={Detail}, gears={Gears}";
+            return $"Entity Transmission: id={ID}, type={TransmissionTypeDTO}, detail={TransmissionTypeDetailDTO}, gears={Gears}";
         }           
         
     }

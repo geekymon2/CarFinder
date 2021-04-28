@@ -1,7 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
 {
     public class Engine
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [StringLength(255)]
         public string ID { get; set; }
         public int NoOfCylinders { get; set; }
         public int EngineSizeCC { get; set; }
