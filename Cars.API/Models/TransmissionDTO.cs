@@ -7,6 +7,14 @@ namespace Geekymon2.CarsApi.Cars.API.Models
         public string Detail { get; set; }
         public int Gears { get; set; }
 
+        public TransmissionDTO()
+        {}          
+
+        public TransmissionDTO(string id)
+        {
+            ID = id;            
+        }          
+
         public TransmissionDTO(string id, string type, string detail, int gears)
         {
             ID = id;
