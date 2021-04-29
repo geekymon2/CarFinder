@@ -1,46 +1,106 @@
 [
     {
-        "id": "1",
-        "make": "Ford",
-        "model": "Falcon",
-        "year": 2009,
-        "doors": 5,
-        "bodyType": "SEDAN",
-        "transmission": "AUTOMATIC",
-        "price": 12000,
-        "odometer": 140000
+      "makeDTO": "FORD",
+      "model": "Falcon",
+      "year": 2009,
+      "doors": 5,
+      "seats": 5,
+      "bodyTypeDTO": "SEDAN",
+      "price": 7500,
+      "odometer": 140000,
+      "description": "Ford Falcon G6E",
+      "engineDTO": {
+        "noOfCylinders": 6,
+        "engineSizeCC": 4000,
+        "powerKW": 195,
+        "cylinderConfigDTO": "INLINE",
+        "driveTypeDTO": "REARWHEELDRIVE",
+        "fuelTypeDTO": "DUALFUEL",
+        "fuelEconomy": 10,
+        "powerToWeight": 90
+      },
+      "transmissionDTO": {
+        "transmissionTypeDTO": "AUTOMATIC",
+        "transmissionTypeDetailDTO": "AUTO",
+        "gears": 6
+      }
     },
     {
-        "id": "2",
-        "make": "Mazda",
-        "model": "323",
-        "year": 1995,
-        "doors": 5,
-        "bodyType": "SEDAN",
-        "transmission": "AUTOMATIC",
-        "price": 5300,
-        "odometer": 250000
+      "makeDTO": "MAZDA",
+      "model": "323",
+      "year": 1995,
+      "doors": 5,
+      "seats": 5,
+      "bodyTypeDTO": "SEDAN",
+      "price": 5300,
+      "odometer": 250000,
+      "description": "Mazda 323 Protege",
+      "engineDTO": {
+        "noOfCylinders": 4,
+        "engineSizeCC": 1800,
+        "powerKW": 70,
+        "cylinderConfigDTO": "INLINE",
+        "driveTypeDTO": "FRONTWHEELDRIVE",
+        "fuelTypeDTO": "PETROL",
+        "fuelEconomy": 7,
+        "powerToWeight": 60
+      },
+      "transmissionDTO": {
+        "transmissionTypeDTO": "AUTOMATIC",
+        "transmissionTypeDetailDTO": "AUTO",
+        "gears": 4
+      }
     },
     {
-        "id": "3",
-        "make": "Toyota",
-        "model": "Aurion",
-        "year": 2006,
-        "doors": 5,
-        "bodyType": "SEDAN",
-        "transmission": "AUTOMATIC",
-        "price": 4500,
-        "odometer": 145000
-    },
+      "makeDTO": "TOYOTA",
+      "model": "Aurion",
+      "year": 2006,
+      "doors": 5,
+      "seats": 5,
+      "bodyTypeDTO": "SEDAN",
+      "price": 4500,
+      "odometer": 145000,
+      "description": "Toyota Aurion ATX",
+      "engineDTO": {
+        "noOfCylinders": 6,
+        "engineSizeCC": 3500,
+        "powerKW": 200,
+        "cylinderConfigDTO": "VSHAPED",
+        "driveTypeDTO": "FRONTWHEELDRIVE",
+        "fuelTypeDTO": "PETROL",
+        "fuelEconomy": 14,
+        "powerToWeight": 90
+      },
+      "transmissionDTO": {
+        "transmissionTypeDTO": "AUTOMATIC",
+        "transmissionTypeDetailDTO": "AUTO",
+        "gears": 6
+      }
+    },  
     {
-        "id": "4",
-        "make": "Hyundai",
-        "model": "Tucson",
-        "year": 2020,
-        "doors": 5,
-        "bodyType": "SUV",
-        "transmission": "AUTOMATIC",
-        "price": 29500,
-        "odometer": 0
-    }           
+      "makeDTO": "HYUNDAI",
+      "model": "Tucson",
+      "year": 2020,
+      "doors": 5,
+      "seats": 5,
+      "bodyTypeDTO": "SUV",
+      "price": 29500,
+      "odometer": 0,
+      "description": "Hyundai Tucson",
+      "engineDTO": {
+        "noOfCylinders": 4,
+        "engineSizeCC": 2000,
+        "powerKW": 121,
+        "cylinderConfigDTO": "INLINE",
+        "driveTypeDTO": "FRONTWHEELDRIVE",
+        "fuelTypeDTO": "PETROL",
+        "fuelEconomy": 8,
+        "powerToWeight": 75
+      },
+      "transmissionDTO": {
+        "transmissionTypeDTO": "AUTOMATIC",
+        "transmissionTypeDetailDTO": "AUTO",
+        "gears": 6
+      }
+    }         
 ]
