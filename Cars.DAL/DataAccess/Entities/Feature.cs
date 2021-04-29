@@ -14,6 +14,13 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
             ID = id;            
         }
 
+        public Feature(string id, string name, string value)
+        {
+            ID = id;            
+            Name = name;
+            Value = value;
+        }
+
         public override string ToString() {
             return $"Entity Feature: id={ID}, name={Name}, value={Value}";
         }        

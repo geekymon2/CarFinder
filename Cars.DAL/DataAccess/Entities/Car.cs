@@ -14,8 +14,8 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
             ID = id;            
         }
 
-        public Car(string id, Make make, string model, int year, int doors, int seats, double price, int odo, string desc, 
-        Engine engine, BodyType bodyType, Transmission transmission, List<Feature> featureList)
+        public Car(string id, Make make, string model, int year, int doors, int seats, BodyType bodyType, double price, int odo, string desc, 
+        Engine engine, Transmission transmission, List<Feature> featureList)
         {
             ID = id;            
             Make = make;
@@ -65,8 +65,8 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public List<Feature> FeatureList { get; set; }
 
         public override string ToString() {
-            return $"Entity Car: id={ID}, make={Make}, model={Model}, year={Year}, doors={Doors}, seats={Seats}, price={Price}, odometer={Odometer}," +
-            $"desc={Description}, engine={Engine}, body={BodyType}, transmission={Transmission}, features={FeatureList}";
+            return $"Entity Car: id={ID}, make={Make}, model={Model}, year={Year}, doors={Doors}, seats={Seats}, body={BodyType}, price={Price}, odometer={Odometer}, " +
+            $"desc={Description}, engine={Engine}, transmission={Transmission}, features={string.Join(",", FeatureList)}";
         }
     }
 }

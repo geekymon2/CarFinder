@@ -34,7 +34,7 @@ namespace Geekymon2.CarsApi.Cars.API.Models
         }
 
         public override string ToString() {
-            return $"Entity Engine: id={ID}, cylinders={NoOfCylinders}, size={EngineSizeCC}, power={PowerKW}, config={CylinderConfigDTO}, drive={DriveTypeDTO}, fuel={FuelTypeDTO}, " +
+            return $"EngineDTO: id={ID}, cylinders={NoOfCylinders}, size={EngineSizeCC}, power={PowerKW}, config={CylinderConfigDTO}, drive={DriveTypeDTO}, fuel={FuelTypeDTO}, " +
             $"economy={FuelEconomy}, powertoweight={PowerToWeight}";
         }
     }

@@ -24,7 +24,7 @@ namespace Geekymon2.CarsApi.Cars.API.Models
         }
 
         public override string ToString() {
-            return $"Entity Transmission: id={ID}, type={TransmissionTypeDTO}, detail={TransmissionTypeDetailDTO}, gears={Gears}";
+            return $"TransmissionDTO: id={ID}, type={TransmissionTypeDTO}, detail={TransmissionTypeDetailDTO}, gears={Gears}";
         }           
         
     }

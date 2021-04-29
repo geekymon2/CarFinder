@@ -44,7 +44,6 @@ namespace Geekymon2.CarsApi.Cars.API.Service
             CylinderConfiguration cylinderConfig = (CylinderConfiguration)System.Enum.Parse(typeof(CylinderConfiguration),carItem.EngineDTO.CylinderConfigDTO.ToString());
             DriveType drive = (DriveType)System.Enum.Parse(typeof(DriveType),carItem.EngineDTO.DriveTypeDTO.ToString());
             FuelType fuel = (FuelType)System.Enum.Parse(typeof(FuelType),carItem.EngineDTO.FuelTypeDTO.ToString());
-
             TransmissionType transmissionType = (TransmissionType)System.Enum.Parse(typeof(TransmissionType),carItem.TransmissionDTO.TransmissionTypeDTO.ToString());
             TransmissionTypeDetail transmissionTypeDetail = (TransmissionTypeDetail)System.Enum.Parse(typeof(TransmissionTypeDetail),carItem.TransmissionDTO.TransmissionTypeDetailDTO.ToString());
 
@@ -54,12 +53,13 @@ namespace Geekymon2.CarsApi.Cars.API.Service
             Transmission t = new Transmission(carItem.TransmissionDTO.ID, transmissionType, transmissionTypeDetail, carItem.TransmissionDTO.Gears);
             List<Feature> features = new List<Feature>();
 
-            var c = new Car(carItem.ID, make, carItem.Model, carItem.Year, carItem.Doors, carItem.Seats, carItem.Price, carItem.Odometer, carItem.Description, e, bodyType, t, features);
+            //create the new car entity
+            var c = new Car(carItem.ID, make, carItem.Model, carItem.Year, carItem.Doors, carItem.Seats, bodyType, carItem.Price, carItem.Odometer, carItem.Description, e, t, features);
             _carContext.Add(c);
             _carContext.SaveChanges();
             _logger.LogInformation(carItem.ToString() + "Total: {0}", _carContext.Cars.Count());
 
-            //populate the dto identity after the record is saved.
+            //populate the dto id after the record is saved.
             carItem.ID = c.ID;
             carItem.EngineDTO.ID = c.Engine.ID;
             carItem.TransmissionDTO.ID = c.Transmission.ID;
