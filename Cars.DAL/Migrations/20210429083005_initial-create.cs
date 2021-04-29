@@ -10,13 +10,13 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                 name: "Engine",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     NoOfCylinders = table.Column<int>(type: "int", nullable: false),
                     EngineSizeCC = table.Column<int>(type: "int", nullable: false),
                     PowerKW = table.Column<int>(type: "int", nullable: false),
-                    CylinderConfig = table.Column<int>(type: "int", nullable: false),
-                    DriveType = table.Column<int>(type: "int", nullable: false),
-                    FuelType = table.Column<int>(type: "int", nullable: false),
+                    CylinderConfig = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    DriveType = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    FuelType = table.Column<string>(type: "nvarchar(128)", nullable: false),
                     FuelEconomy = table.Column<double>(type: "float", nullable: false),
                     PowerToWeight = table.Column<double>(type: "float", nullable: false)
                 },
@@ -29,9 +29,9 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                 name: "Transmission",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Type = table.Column<int>(type: "int", nullable: false),
-                    Detail = table.Column<int>(type: "int", nullable: false),
+                    ID = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    Detail = table.Column<string>(type: "nvarchar(128)", nullable: false),
                     Gears = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -52,9 +52,9 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     Odometer = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EngineID = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    EngineID = table.Column<string>(type: "nvarchar(255)", nullable: true),
                     BodyType = table.Column<string>(type: "nvarchar(128)", nullable: false),
-                    TransmissionID = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    TransmissionID = table.Column<string>(type: "nvarchar(255)", nullable: true)
                 },
                 constraints: table =>
                 {

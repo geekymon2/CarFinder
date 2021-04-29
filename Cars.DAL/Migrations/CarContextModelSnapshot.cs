@@ -36,7 +36,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("EngineID")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Make")
                         .IsRequired()
@@ -55,7 +55,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TransmissionID")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -72,13 +72,17 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
             modelBuilder.Entity("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Engine", b =>
                 {
                     b.Property<string>("ID")
-                        .HasColumnType("nvarchar(450)");
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
-                    b.Property<int>("CylinderConfig")
-                        .HasColumnType("int");
+                    b.Property<string>("CylinderConfig")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)");
 
-                    b.Property<int>("DriveType")
-                        .HasColumnType("int");
+                    b.Property<string>("DriveType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<int>("EngineSizeCC")
                         .HasColumnType("int");
@@ -86,8 +90,9 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
                     b.Property<double>("FuelEconomy")
                         .HasColumnType("float");
 
-                    b.Property<int>("FuelType")
-                        .HasColumnType("int");
+                    b.Property<string>("FuelType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<int>("NoOfCylinders")
                         .HasColumnType("int");
@@ -127,16 +132,20 @@ namespace Geekymon2.CarsApi.Cars.DAL.Migrations
             modelBuilder.Entity("Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities.Transmission", b =>
                 {
                     b.Property<string>("ID")
-                        .HasColumnType("nvarchar(450)");
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
-                    b.Property<int>("Detail")
-                        .HasColumnType("int");
+                    b.Property<string>("Detail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<int>("Gears")
                         .HasColumnType("int");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(128)");
 
                     b.HasKey("ID");
 
