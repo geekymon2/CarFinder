@@ -21,6 +21,7 @@ namespace Geekymon2.CarsApi.Cars.API.Service
         public List<CarDTO> GetCars()
         {
             var cars = from c in _carContext.Cars
+
                 select new CarDTO()
                 {
                     ID = c.ID,
@@ -28,10 +29,21 @@ namespace Geekymon2.CarsApi.Cars.API.Service
                     Model = c.Model,
                     Year = c.Year,
                     Doors = c.Doors,
-                    Odometer = c.Odometer,
-                    Price = c.Price,
-                    //Transmission = c.Transmission.ToString(),
+                    Seats = c.Seats,
                     BodyTypeDTO = (BodyTypeDTO)System.Enum.Parse(typeof(BodyType),c.BodyType.ToString()),
+                    Price = c.Price,
+                    Odometer = c.Odometer,
+                    Description = c.Description,
+                    EngineDTO = new EngineDTO(c.Engine.ID, c.Engine.NoOfCylinders, c.Engine.EngineSizeCC, c.Engine.PowerKW, 
+                    (CylinderConfigurationDTO)System.Enum.Parse(typeof(CylinderConfigurationDTO),c.Engine.CylinderConfig.ToString()),
+                    (DriveTypeDTO)System.Enum.Parse(typeof(DriveTypeDTO),c.Engine.DriveType.ToString()),
+                    (FuelTypeDTO)System.Enum.Parse(typeof(FuelTypeDTO),c.Engine.FuelType.ToString()),
+                    c.Engine.FuelEconomy, c.Engine.PowerToWeight),
+                    TransmissionDTO = new TransmissionDTO(c.Transmission.ID,
+                    (TransmissionTypeDTO)System.Enum.Parse(typeof(TransmissionTypeDTO),c.Transmission.Type.ToString()),
+                    (TransmissionTypeDetailDTO)System.Enum.Parse(typeof(TransmissionTypeDetailDTO),c.Transmission.Detail.ToString()),
+                    c.Transmission.Gears
+                    )
                 };
 
             return cars.ToList();
@@ -84,6 +96,15 @@ namespace Geekymon2.CarsApi.Cars.API.Service
                 c.Price = car.Price;
                 c.Odometer = car.Odometer;
                 c.Description = car.Description;
+
+                c.Engine.NoOfCylinders = car.EngineDTO.NoOfCylinders;
+                c.Engine.EngineSizeCC = car.EngineDTO.EngineSizeCC;
+                c.Engine.PowerKW = car.EngineDTO.PowerKW;
+                c.Engine.CylinderConfig = (CylinderConfiguration)System.Enum.Parse(typeof(CylinderConfiguration),car.EngineDTO.CylinderConfigDTO.ToString());
+                c.Engine.DriveType = (DriveType)System.Enum.Parse(typeof(DriveType),car.EngineDTO.DriveTypeDTO.ToString());
+                c.Engine.FuelType = (FuelType)System.Enum.Parse(typeof(FuelType),car.EngineDTO.FuelTypeDTO.ToString());
+                c.Engine.FuelEconomy = car.EngineDTO.FuelEconomy;
+                c.Engine.PowerToWeight = car.EngineDTO.PowerToWeight;
 
                 c.Transmission.Gears = car.TransmissionDTO.Gears;
                 c.Transmission.Type = (TransmissionType)System.Enum.Parse(typeof(TransmissionType),car.TransmissionDTO.TransmissionTypeDTO.ToString());
