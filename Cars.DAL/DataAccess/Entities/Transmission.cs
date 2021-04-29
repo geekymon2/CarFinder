@@ -9,8 +9,13 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [StringLength(255)]
         public string ID { get; set; }
+
+        [Column(TypeName = "nvarchar(128)")]
         public TransmissionType Type { get; set; }
+        
+        [Column(TypeName = "nvarchar(128)")]
         public TransmissionTypeDetail Detail { get; set; }
+        
         public int Gears { get; set; }
 
         public Transmission()

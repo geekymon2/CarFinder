@@ -12,9 +12,16 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public int NoOfCylinders { get; set; }
         public int EngineSizeCC { get; set; }
         public int PowerKW { get; set; }  
+
+        [Column(TypeName = "nvarchar(128)")]
         public CylinderConfiguration CylinderConfig { get; set; }
+        
+        [Column(TypeName = "nvarchar(128)")]
         public DriveType DriveType { get; set; }
+        
+        [Column(TypeName = "nvarchar(128)")]
         public FuelType FuelType { get; set; }
+        
         public double FuelEconomy { get; set; }
         public double PowerToWeight { get; set; }
 
