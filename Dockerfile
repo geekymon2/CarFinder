@@ -17,6 +17,7 @@ WORKDIR /src
 COPY *.sln ./
 COPY ["Cars.API/Cars.Api.csproj", "Cars.API/"]
 COPY ["Cars.DAL/Cars.DAL.csproj", "Cars.DAL/"]
+COPY ["Cars.DAL.Test/Cars.DAL.Test.csproj", "Cars.DAL.Test/"]
 COPY ["Cars.EF.Migrations/Cars.EF.Migrations.csproj", "Cars.EF.Migrations/"]
 RUN dotnet restore
 COPY . .
