@@ -26,6 +26,7 @@ namespace Geekymon2.CarsApi.Cars.Api
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
             services.AddScoped<ICarsService, CarsService>();
             services.AddSwaggerGen(c =>

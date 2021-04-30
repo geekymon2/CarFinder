@@ -4,48 +4,33 @@ using System.Linq;
 using Geekymon2.CarsApi.Cars.DAL.DataAccess.DBContext;
 using Geekymon2.CarsApi.Cars.API.Models;
 using Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities;
+using AutoMapper;
 
 namespace Geekymon2.CarsApi.Cars.API.Service
 {
     public class CarsService : ICarsService
     {
-        private readonly ILogger<CarsService> _logger;        
+        private readonly ILogger<CarsService> _logger;  
+        private readonly IMapper _mapper;      
         private CarContext _carContext;
 
-        public CarsService(ILogger<CarsService> logger, CarContext carContext)
+        public CarsService(ILogger<CarsService> logger, CarContext carContext, IMapper mapper)
         {
             _carContext = carContext;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public List<CarDTO> GetCars()
         {
-            var cars = from c in _carContext.Cars
+            List<CarDTO> cars = new List<CarDTO>();
 
-                select new CarDTO()
-                {
-                    ID = c.ID,
-                    MakeDTO = (MakeDTO)System.Enum.Parse(typeof(Make),c.Make.ToString()),
-                    Model = c.Model,
-                    Year = c.Year,
-                    Doors = c.Doors,
-                    Seats = c.Seats,
-                    BodyTypeDTO = (BodyTypeDTO)System.Enum.Parse(typeof(BodyType),c.BodyType.ToString()),
-                    Price = c.Price,
-                    Odometer = c.Odometer,
-                    Description = c.Description,
-                    EngineDTO = new EngineDTO(c.Engine.ID, c.Engine.NoOfCylinders, c.Engine.EngineSizeCC, c.Engine.PowerKW, 
-                    (CylinderConfigurationDTO)System.Enum.Parse(typeof(CylinderConfigurationDTO),c.Engine.CylinderConfig.ToString()),
-                    (DriveTypeDTO)System.Enum.Parse(typeof(DriveTypeDTO),c.Engine.DriveType.ToString()),
-                    (FuelTypeDTO)System.Enum.Parse(typeof(FuelTypeDTO),c.Engine.FuelType.ToString()),
-                    c.Engine.FuelEconomy, c.Engine.PowerToWeight),
-                    TransmissionDTO = new TransmissionDTO(c.Transmission.ID,
-                    (TransmissionTypeDTO)System.Enum.Parse(typeof(TransmissionTypeDTO),c.Transmission.Type.ToString()),
-                    (TransmissionTypeDetailDTO)System.Enum.Parse(typeof(TransmissionTypeDetailDTO),c.Transmission.Detail.ToString()),
-                    c.Transmission.Gears
-                    )                    
-                };
-
+            foreach (var c in _carContext.Cars)
+            {
+                cars.Add(_mapper.Map<CarDTO>(c));
+                
+            }
+            
             return cars.ToList();
         }
 
