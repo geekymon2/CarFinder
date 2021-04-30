@@ -7,8 +7,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [StringLength(255)]
-        public string ID { get; set; }
+        public long ID { get; set; }
 
         [Column(TypeName = "nvarchar(128)")]
         public TransmissionType Type { get; set; }
@@ -21,12 +20,12 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public Transmission()
         {}
 
-        public Transmission(string id)
+        public Transmission(long id)
         {
             ID = id;            
         }
 
-        public Transmission(string id, TransmissionType type, TransmissionTypeDetail detail, int gears)
+        public Transmission(long id, TransmissionType type, TransmissionTypeDetail detail, int gears)
         {
             ID = id;
             Type = type;

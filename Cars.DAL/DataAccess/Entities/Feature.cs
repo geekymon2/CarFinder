@@ -1,20 +1,25 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
 {
     public class Feature
     {
-        public string ID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long ID { get; set; }
         public string Name {  get; set; }
         public string Value { get; set; }
 
         public Feature()
         {}
 
-        public Feature(string id)
+        public Feature(long id)
         {
             ID = id;            
         }
 
-        public Feature(string id, string name, string value)
+        public Feature(long id, string name, string value)
         {
             ID = id;            
             Name = name;

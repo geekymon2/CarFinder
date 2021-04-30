@@ -42,7 +42,7 @@ namespace Geekymon2.CarsApi.Cars.API.Controllers
         }
 
         [HttpPut("/api/cars/{id}")]
-        public ActionResult<CarDTO> UpdateCar(string id, CarDTO car)
+        public ActionResult<CarDTO> UpdateCar(long id, CarDTO car)
         {
             _service.UpdateCar(id, car);
             return car;
@@ -51,9 +51,9 @@ namespace Geekymon2.CarsApi.Cars.API.Controllers
 
         [HttpDelete("/api/cars/{id}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<string> DeleteCar(string id)
+        public ActionResult<string> DeleteCar(long id)
         {
-            if (_service.DeleteCar(id) == null)
+            if (_service.DeleteCar(id) == 0)
             {
                 _logger.LogError($"Car not found for id: {id}");
 		        return NotFound(new ErrorDetails 

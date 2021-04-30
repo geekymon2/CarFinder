@@ -43,7 +43,7 @@ namespace Geekymon2.CarsApi.Cars.API.Service
                     (TransmissionTypeDTO)System.Enum.Parse(typeof(TransmissionTypeDTO),c.Transmission.Type.ToString()),
                     (TransmissionTypeDetailDTO)System.Enum.Parse(typeof(TransmissionTypeDetailDTO),c.Transmission.Detail.ToString()),
                     c.Transmission.Gears
-                    )
+                    )                    
                 };
 
             return cars.ToList();
@@ -79,7 +79,7 @@ namespace Geekymon2.CarsApi.Cars.API.Service
             return carItem;
         }
 
-        public CarDTO UpdateCar(string id, CarDTO car)
+        public CarDTO UpdateCar(long id, CarDTO car)
         {
             var c = _carContext.Cars.FirstOrDefault(
                 c => c.ID == id
@@ -116,7 +116,7 @@ namespace Geekymon2.CarsApi.Cars.API.Service
             return car;
         }
 
-        public string DeleteCar(string id)
+        public long DeleteCar(long id)
         {            
             Car c = _carContext.Cars.Find(id);
             if (c != null)
@@ -126,7 +126,7 @@ namespace Geekymon2.CarsApi.Cars.API.Service
                 return id;
             }
 
-            return null;
+            return 0;
         }
         
         ~CarsService()

@@ -2,7 +2,7 @@ namespace Geekymon2.CarsApi.Cars.API.Models
 {
     public class EngineDTO
     {
-        public string ID { get; set; }
+        public long ID { get; set; }
         public int NoOfCylinders { get; set; }
         public int EngineSizeCC { get; set; }
         public int PowerKW { get; set; }  
@@ -15,12 +15,12 @@ namespace Geekymon2.CarsApi.Cars.API.Models
         public EngineDTO()
         {}          
 
-        public EngineDTO(string id)
+        public EngineDTO(long id)
         {
             ID = id;            
         }        
 
-        public EngineDTO(string id, int noOfCylinders, int engineSizeCC, int powerKW, CylinderConfigurationDTO config, DriveTypeDTO drive, FuelTypeDTO fuel, double economy, double powerToWeight)
+        public EngineDTO(long id, int noOfCylinders, int engineSizeCC, int powerKW, CylinderConfigurationDTO config, DriveTypeDTO drive, FuelTypeDTO fuel, double economy, double powerToWeight)
         {
             ID = id;
             NoOfCylinders = noOfCylinders;

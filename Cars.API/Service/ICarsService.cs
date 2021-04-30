@@ -7,7 +7,7 @@ namespace Geekymon2.CarsApi.Cars.API.Service
     {
         public List<CarDTO> GetCars();
         public CarDTO AddCar(CarDTO car);
-        public CarDTO UpdateCar(string id, CarDTO car);
-        public string DeleteCar(string id);        
+        public CarDTO UpdateCar(long id, CarDTO car);
+        public long DeleteCar(long id);        
     }
 }

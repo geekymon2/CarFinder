@@ -2,7 +2,7 @@ namespace Geekymon2.CarsApi.Cars.API.Models
 {
     public class TransmissionDTO
     {
-        public string ID { get; set; }
+        public long ID { get; set; }
         public TransmissionTypeDTO TransmissionTypeDTO { get; set; }
         public TransmissionTypeDetailDTO TransmissionTypeDetailDTO { get; set; }
         public int Gears { get; set; }
@@ -10,12 +10,12 @@ namespace Geekymon2.CarsApi.Cars.API.Models
         public TransmissionDTO()
         {}          
 
-        public TransmissionDTO(string id)
+        public TransmissionDTO(long id)
         {
             ID = id;            
         }          
 
-        public TransmissionDTO(string id, TransmissionTypeDTO type, TransmissionTypeDetailDTO detail, int gears)
+        public TransmissionDTO(long id, TransmissionTypeDTO type, TransmissionTypeDetailDTO detail, int gears)
         {
             ID = id;
             TransmissionTypeDTO = type;

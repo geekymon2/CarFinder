@@ -9,12 +9,12 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         public Car()
         {}
 
-        public Car(string id)
+        public Car(long id)
         {
             ID = id;            
         }
 
-        public Car(string id, Make make, string model, int year, int doors, int seats, BodyType bodyType, double price, int odo, string desc, 
+        public Car(long id, Make make, string model, int year, int doors, int seats, BodyType bodyType, double price, int odo, string desc, 
         Engine engine, Transmission transmission, List<Feature> featureList)
         {
             ID = id;            
@@ -34,8 +34,7 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [StringLength(255)]
-        public string ID { get; set; }
+        public long ID { get; set; }
 
         [Column(TypeName = "nvarchar(128)")]
         public Make Make { get; set; }
