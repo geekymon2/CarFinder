@@ -9,7 +9,7 @@ namespace Geekymon2.CarsApi.Cars.API.Mappers
         public AutoMappingProfile()
         {
             CreateMap<Make, MakeDTO>();            
-            CreateMap<Car, CarDTO>();
+            CreateMap<Car, CarDTO>().ReverseMap();
             CreateMap<Engine, EngineDTO>();
             CreateMap<Transmission, TransmissionDTO>();                        
         }

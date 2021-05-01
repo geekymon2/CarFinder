@@ -58,7 +58,6 @@ namespace Geekymon2.CarsApi.Cars.DAL.DataAccess.Entities
         [Column(TypeName = "nvarchar(128)")]
         public BodyType BodyType { get; set; }
         
-        [Column(TypeName = "nvarchar(128)")]
         public Transmission Transmission { get; set; }
 
         public List<Feature> FeatureList { get; set; }
