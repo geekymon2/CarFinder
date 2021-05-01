@@ -29,8 +29,8 @@ services:
       - "${DB_PORT:-1403}:${DB_PORT_CONTAINER:-1433}"
   dozzle:
     environment: 
-      - DOZZLE_USERNAME=${DOZZLE_USERNAME:-user}
-      - DOZZLE_PASSWORD=${DOZZLE_PASSWORD:-password}
+      - DOZZLE_USERNAME="${DOZZLE_USERNAME:-user}"
+      - DOZZLE_PASSWORD="${DOZZLE_PASSWORD:-password}"
     container_name: dozzle
     image: amir20/dozzle:latest
     volumes:
