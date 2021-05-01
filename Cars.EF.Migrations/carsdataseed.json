@@ -3,7 +3,7 @@
       "make": "FORD",
       "model": "Falcon",
       "year": 2009,
-      "doors": 5,
+      "doors": 4,
       "seats": 5,
       "bodyType": "SEDAN",
       "price": 7500,
@@ -23,13 +23,15 @@
         "transmissionType": "AUTOMATIC",
         "transmissionTypeDetail": "AUTO",
         "gears": 6
-      }
+      },
+      "features": [
+      ]
     },
     {
       "make": "MAZDA",
       "model": "323",
       "year": 1995,
-      "doors": 5,
+      "doors": 4,
       "seats": 5,
       "bodyType": "SEDAN",
       "price": 5300,
@@ -49,13 +51,15 @@
         "transmissionType": "AUTOMATIC",
         "transmissionTypeDetail": "AUTO",
         "gears": 4
-      }
+      },
+      "features": [
+      ]
     },
     {
       "make": "TOYOTA",
       "model": "Aurion",
       "year": 2006,
-      "doors": 5,
+      "doors": 4,
       "seats": 5,
       "bodyType": "SEDAN",
       "price": 4500,
@@ -75,7 +79,9 @@
         "transmissionType": "AUTOMATIC",
         "transmissionTypeDetail": "AUTO",
         "gears": 6
-      }
+      },
+      "features": [
+      ] 
     },  
     {
       "make": "HYUNDAI",
@@ -101,6 +107,8 @@
         "transmissionType": "AUTOMATIC",
         "transmissionTypeDetail": "AUTO",
         "gears": 6
-      }
+      },
+      "features": [
+      ]      
     }         
 ]
