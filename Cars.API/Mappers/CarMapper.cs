@@ -32,6 +32,22 @@ namespace Geekymon2.CarsApi.Cars.API.Mappers
         public Car MapToCarEntity(CarDTO carDTO)
         {
             var car = new Car();
+            var engineMapper = new EngineMapper();
+            var transmissionMapper = new TransmissionMapper();            
+
+            car.Make = (Make)carDTO.Make;
+            car.Model = carDTO.Model;
+            car.Year = carDTO.Year;
+            car.Doors = carDTO.Doors;
+            car.Seats = carDTO.Seats;
+            car.BodyType = (BodyType)carDTO.BodyType;
+            car.Price = carDTO.Price;
+            car.Odometer = carDTO.Odometer;
+            car.Description = carDTO.Description;
+            car.Engine = engineMapper.MapToEngineEntity(carDTO.Engine);
+            car.Transmission = transmissionMapper.MapToTransmissionEntity(carDTO.Transmission);
+            car.FeatureList = carDTO.Features.Select(x => new Feature() { ID = x.ID, Name = x.Name, Value = x.Value }).ToList();
+
             return car;
         }
         

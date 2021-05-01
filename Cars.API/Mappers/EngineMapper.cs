@@ -19,5 +19,20 @@ namespace Geekymon2.CarsApi.Cars.API.Mappers
             engineDTO.PowerToWeight = engine.PowerToWeight;
             return engineDTO;
         }
+
+        public Engine MapToEngineEntity(EngineDTO engineDTO)
+        {
+            var engine = new Engine();
+            engine.ID = engineDTO.ID;
+            engine.NoOfCylinders = engineDTO.NoOfCylinders;
+            engine.EngineSizeCC = engineDTO.EngineSizeCC;
+            engine.PowerKW = engineDTO.PowerKW;
+            engine.CylinderConfig = (CylinderConfiguration)engineDTO.CylinderConfigDTO;
+            engine.DriveType = (DriveType)engineDTO.DriveTypeDTO;
+            engine.FuelType = (FuelType)engineDTO.FuelTypeDTO;
+            engine.FuelEconomy = engineDTO.FuelEconomy;
+            engine.PowerToWeight = engineDTO.PowerToWeight;
+            return engine;
+        }        
     }
 }

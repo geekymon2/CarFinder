@@ -15,5 +15,16 @@ namespace Geekymon2.CarsApi.Cars.API.Mappers
 
             return transmissionDTO;
         }
+
+        public Transmission MapToTransmissionEntity(TransmissionDTO transmissionDTO)
+        {
+            var transmission = new Transmission();
+            transmission.ID = transmissionDTO.ID;
+            transmission.Type = (TransmissionType)transmissionDTO.TransmissionTypeDTO;
+            transmission.Detail = (TransmissionTypeDetail)transmissionDTO.TransmissionTypeDetailDTO;
+            transmission.Gears = transmissionDTO.Gears;
+
+            return transmission;
+        }        
     }
 }
