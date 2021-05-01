@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Geekymon2.CarsApi.Cars.API.Service;
 using Geekymon2.CarsApi.Cars.API.Exception;
 using Geekymon2.CarsApi.Cars.DAL.DataAccess.DBContext;
+using Geekymon2.CarsApi.Cars.API.Mappers;
 
 namespace Geekymon2.CarsApi.Cars.Api
 {
@@ -26,7 +27,7 @@ namespace Geekymon2.CarsApi.Cars.Api
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<CarMapper>();
             services.AddControllers();
             services.AddScoped<ICarsService, CarsService>();
             services.AddSwaggerGen(c =>
