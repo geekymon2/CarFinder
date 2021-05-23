@@ -25,7 +25,7 @@ namespace Geekymon2.CarsApi.Cars.API.Controllers
         [HttpGet("/api/status")]
         public ActionResult<String> GetStatus()
         {
-            return "Car Finder API is Running...";
+            return $"Car Finder API is Running on {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")} Environment.";
         }
 
         [HttpGet("/api/cars")]
