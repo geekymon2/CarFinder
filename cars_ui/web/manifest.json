@@ -1,6 +1,6 @@
 {
-    "name": "carfinder",
-    "short_name": "carfinder",
+    "name": "cars_ui",
+    "short_name": "cars_ui",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
